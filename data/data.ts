@@ -5,7 +5,7 @@ export type Project = {
     image: string;
     label?: string;
     bgClass: string;
-    category: "Client" | "AI" | "Product";
+    category: "Client" | "AI" ;
     featured?: boolean;
 };
 
