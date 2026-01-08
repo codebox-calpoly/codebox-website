@@ -124,46 +124,70 @@ export const projects: Project[] = [
 
 export const leadership: LeadershipMember[] = [
     {
-        name: "Alex Chen",
-        role: "President & Co-Founder",
-        linkedin: "#",
+        name: "Muzart Tuman",
+        role: "Founder & President",
+        linkedin: "https://www.linkedin.com/in/muzart-tuman/",
         github: "#",
     },
     {
-        name: "Sarah Martinez",
+        name: "Hannah Moshtagi",
+        role: "Co-Founder",
+        linkedin: "https://www.linkedin.com/in/hannah-moshtaghi/",
+        github: "#",
+    },
+    {
+        name: "Rishi Thakkar",
+        role: "Vice President",
+        linkedin: "https://www.linkedin.com/in/rishi-thakkar1/",
+        github: "#",
+    },
+    {
+        name: "Matthew Blam",
         role: "Director of Engineering",
+        linkedin: "https://www.linkedin.com/in/matthew-blam/",
+        github: "#",
+    },
+    {
+        name: "Parker Jones",
+        role: "Director of Projects",
+        linkedin: "https://www.linkedin.com/in/parker-jones-ai/",
+        github: "#",
+    },
+    {
+        name: "Lucy Anguiano",
+        role: "Director of Marketing",
         linkedin: "#",
         github: "#",
     },
     {
-        name: "Jordan Lee",
-        role: "VP of Operations",
-        linkedin: "#",
+        name: "Lindsay Minami",
+        role: "Director of Membership",
+        linkedin: "https://www.linkedin.com/in/lindsay-minami/",
         github: "#",
     },
     {
-        name: "Priya Patel",
-        role: "Tech Lead - Web",
-        linkedin: "#",
+        name: "Agnes Kong",
+        role: "Director of Operations",
+        linkedin: "https://www.linkedin.com/in/agneskongg/",
         github: "#",
     },
     {
-        name: "Marcus Johnson",
-        role: "Tech Lead - Mobile",
-        linkedin: "#",
+        name: "Dakshesh Pasala",
+        role: "Associate Director of Engineering",
+        linkedin: "https://www.linkedin.com/in/daksheshpasala/",
         github: "#",
     },
     {
-        name: "Emily Zhang",
-        role: "Tech Lead - AI/ML",
-        linkedin: "#",
+        name: "Samiksha Karimbil",
+        role: "Associate Director of Engineering",
+        linkedin: "https://www.linkedin.com/in/samiksha-karimbil/",
         github: "#",
     },
 ];
 
 export const members: TeamMember[] = [
-    { name: "David Kim", role: "Full-Stack Developer" },
-    { name: "Sophia Rodriguez", role: "Frontend Developer" },
+    { name: "", role: "Full-Stack Developer" },
+    { name: "", role: "Frontend Developer" },
     { name: "James Wilson", role: "Backend Engineer" },
     { name: "Olivia Brown", role: "Mobile Developer" },
     { name: "Ethan Garcia", role: "ML Engineer" },
@@ -175,6 +199,14 @@ export const members: TeamMember[] = [
     { name: "Lucas Taylor", role: "Backend Developer" },
     { name: "Charlotte Lee", role: "Frontend Developer" },
 ];
+
+// Srinithi Doddapaneni
+// Trace Macias
+// Liu Jacky
+// Atharv Allepally
+// Vishal Murali Kannan
+// Jake Orchanian
+
 
 const leadershipNames = leadership
     .filter((leader) => !leader.role.toLowerCase().includes("tech lead"))
