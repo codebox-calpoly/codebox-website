@@ -145,7 +145,7 @@ export const leadership: LeadershipMember[] = [
         name: "Matthew Blam",
         role: "Director of Engineering",
         linkedin: "https://www.linkedin.com/in/matthew-blam/",
-        github: "#",
+        github: "https://github.com/MatthewBlam",
     },
     {
         name: "Parker Jones",
@@ -181,9 +181,22 @@ export const leadership: LeadershipMember[] = [
         name: "Samiksha Karimbil",
         role: "Associate Director of Engineering",
         linkedin: "https://www.linkedin.com/in/samiksha-karimbil/",
-        github: "#",
+        github: "https://github.com/samikshakarimbil",
     },
 ];
+
+export const techLeads: TeamMember[] = [
+    { name: "Saman Sepehr", role: "Tech Lead" },
+    { name: "Jaydon Chen ", role: "Tech Lead" },
+    { name: "Peter Chinh", role: "Tech Lead" },
+    { name: "Namish Mannepalli", role: "Tech Lead" },
+    { name: "Joshua Panicker", role: "Tech Lead" },
+    { name: "Jonah Chan", role: "Tech Lead" },
+    { name: "Siddharth Balaji", role: "Tech Lead" },
+    { name: "Winnie Trinh ", role: "Tech Lead" },
+    { name: "Rohit Kota", role: "Tech Lead" },
+    { name: "Rishi Thakkar", role: "Tech Lead" },
+]
 
 export const members: TeamMember[] = [
     { name: "Srinithi Doddapaneni", role: "Developer" },
@@ -220,15 +233,33 @@ export const members: TeamMember[] = [
     { name: "Domenic Federico", role: "Developer" },
 ];
 
+export const productManagers: TeamMember[] = [
+    { name: "Shishir Bonthala", role: "Product Manager" },
+    { name: "Idhika Nagalingam", role: "Product Manager" },
+    { name: "Anthony Orozco", role: "Product Manager" },
+    { name: "Harry Obraztsov ", role: "Product Manager" },
+    { name: "Evan Taylor", role: "Product Manager" },
+]
+
+export const designers: TeamMember[] = [
+    { name: "Hannah Moshtagi", role: "Designers" },
+    { name: "Stella Kwon", role: "Designers" },
+    { name: "Isaiah Cortez ", role: "Designers" },
+    { name: "Isaac Tsai", role: "Designers" },
+    { name: "Chanelle Friend", role: "Designers" },
+]	
+
 const leadershipNames = leadership
     .filter((leader) => !leader.role.toLowerCase().includes("tech lead"))
     .map((leader) => leader.name);
 
-const techLeadNames = leadership
-    .filter((leader) => leader.role.toLowerCase().includes("tech lead"))
-    .map((leader) => leader.name);
+const techLeadNames = techLeads.map((member) => member.name);
 
 const developerNames = members.map((member) => member.name);
+
+const leadNames = productManagers.map((member) => member.name);
+
+const designerNames = designers.map((member) => member.name);
 
 const advisorNames = ["Aaron Keen"]
 
@@ -238,9 +269,9 @@ export const teamYears: TeamYear[] = [
         sections: {
             leadership: leadershipNames,
             techLeads: techLeadNames,
-            productLeads: [],
+            productLeads: leadNames,
             developers: developerNames,
-            designers: [],
+            designers: designerNames,
             advisors: advisorNames,
         },
     },
