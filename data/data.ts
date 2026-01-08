@@ -37,7 +37,7 @@ export type TeamYear = {
 
 export const projects: Project[] = [
     {
-        title: "Reddit",
+        title: "Aura Farm",
         description:
             "Reddit is one of the largest and most active form platforms on the internet. We designed an innovative MLK scoreboard experience.",
         tags: ["UI/UX"],
@@ -48,7 +48,7 @@ export const projects: Project[] = [
         featured: true,
     },
     {
-        title: "Solidigm AI",
+        title: "Mustang Maps",
         description:
             "Solidigm is a global leader in NAND flash memory solutions. We built a data abstraction pipeline as a part of their AI debugging tool.",
         tags: ["AI/ML", "Backend"],
@@ -59,7 +59,7 @@ export const projects: Project[] = [
         featured: true,
     },
     {
-        title: "GoodNotes",
+        title: "Note Sharer",
         description:
             "Goodnotes is a leading digital note taking platform. We created a proof-of-concept testing platform.",
         tags: ["WEB3", "Testing"],
@@ -70,7 +70,7 @@ export const projects: Project[] = [
         featured: true,
     },
     {
-        title: "Render",
+        title: "Poly Buys",
         description:
             "Render is a cloud platform designed to simplify the deployment and management of web applications.",
         tags: ["UI/UX", "Cloud"],
@@ -81,43 +81,13 @@ export const projects: Project[] = [
         featured: true,
     },
     {
-        title: "StudyHub AI",
+        title: "Poly Problems",
         description:
             "AI-powered study assistant that generates personalized learning resources and practice problems based on your curriculum.",
         tags: ["Python", "OpenAI", "React"],
         image: "https://images.unsplash.com/photo-1594892185343-0241e1d47d15?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHxjb2RpbmclMjBjb2xsYWJvcmF0aW9uJTIwd29ya3NwYWNlfGVufDF8fHx8MTc2NDY1OTcyM3ww&ixlib=rb-4.1.0&q=80&w=1080",
         label: "AI/ML",
         bgClass: "bg-[var(--project-emerald)]",
-        category: "AI",
-    },
-    {
-        title: "Campus Connect",
-        description:
-            "Social platform connecting Cal Poly students with events, clubs, and opportunities across campus with real-time notifications.",
-        tags: ["React", "Firebase", "Mobile"],
-        image: "https://images.unsplash.com/photo-1702047129200-89734f555f38?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHx0ZWNoJTIwc3RhcnR1cCUyMG9mZmljZXxlbnwxfHx8fDE3NjQ1OTY1NDl8MA&ixlib=rb-4.1.0&q=80&w=1080",
-        label: "Product",
-        bgClass: "bg-chart-4",
-        category: "Product",
-    },
-    {
-        title: "EcoTrack Mobile",
-        description:
-            "Mobile app helping students track and reduce their carbon footprint with gamification and social challenges.",
-        tags: ["React Native", "Sustainability"],
-        image: "https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHxzb2Z0d2FyZSUyMGRldmVsb3BtZW50JTIwdGVhbXxlbnwxfHx8fDE3NjQ2MjYwNDl8MA&ixlib=rb-4.1.0&q=80&w=1080",
-        label: "Mobile",
-        bgClass: "bg-[var(--project-lime)]",
-        category: "Product",
-    },
-    {
-        title: "Neural Canvas",
-        description:
-            "AI-powered creative tool that transforms sketches into polished digital art using advanced ML models.",
-        tags: ["AI/ML", "Computer Vision"],
-        image: "https://images.unsplash.com/photo-1731816803705-54ab8fbd6a8f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHxzdHVkZW50JTIwc3R1ZHlpbmclMjBjb21wdXRlcnxlbnwxfHx8fDE3NjQ1ODcxNzh8MA&ixlib=rb-4.1.0&q=80&w=1080",
-        label: "AI/ML",
-        bgClass: "bg-[var(--project-pink)]",
         category: "AI",
     },
 ];
