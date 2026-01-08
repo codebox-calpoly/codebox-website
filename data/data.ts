@@ -186,27 +186,39 @@ export const leadership: LeadershipMember[] = [
 ];
 
 export const members: TeamMember[] = [
-    { name: "", role: "Full-Stack Developer" },
-    { name: "", role: "Frontend Developer" },
-    { name: "James Wilson", role: "Backend Engineer" },
-    { name: "Olivia Brown", role: "Mobile Developer" },
-    { name: "Ethan Garcia", role: "ML Engineer" },
-    { name: "Ava Thompson", role: "DevOps Engineer" },
-    { name: "Noah Anderson", role: "UI/UX Developer" },
-    { name: "Isabella Martinez", role: "Data Engineer" },
-    { name: "Liam Davis", role: "Full-Stack Developer" },
-    { name: "Mia White", role: "iOS Developer" },
-    { name: "Lucas Taylor", role: "Backend Developer" },
-    { name: "Charlotte Lee", role: "Frontend Developer" },
+    { name: "Srinithi Doddapaneni", role: "Developer" },
+    { name: "Trace Macias", role: "Developer" },
+    { name: "Liu Jacky", role: "Developer" },
+    { name: "Atharv Allepally", role: "Developer" },
+    { name: "Vishal Murali Kannan", role: "Developer" },
+    { name: "Jake Orchanian", role: "Developer" },
+    { name: "Drew", role: "Developer" },
+    { name: "Snehil Kakani", role: "Developer" },
+    { name: "Rodney", role: "Developer" },
+    { name: "Osbaldo", role: "Developer" },
+    { name: "Jacob Lee", role: "Developer" },
+    { name: "Scout Knight-Pheng", role: "Developer" },
+    { name: "Daniel Erazo", role: "Developer" },
+    { name: "Victor Xie", role: "Developer" },
+    { name: "Carter Lim", role: "Developer" },
+    { name: "Emma Walker", role: "Developer" },
+    { name: "Moe Aung", role: "Developer" },
+    { name: "Noah Gullo", role: "Developer" },
+    { name: "Wieland", role: "Developer" },
+    { name: "Stella", role: "Developer" },
+    { name: "Arin Johar", role: "Developer" },
+    { name: "Chloe Low", role: "Developer" },
+    { name: "Emi Okumoto", role: "Developer" },
+    { name: "Scott Eisenberg", role: "Developer" },
+    { name: "Deekshi", role: "Developer" },
+    { name: "Matthew Phan", role: "Developer" },
+    { name: "Taye Staats", role: "Developer" },
+    { name: "Cole Hackman", role: "Developer" },
+    { name: "Lorinc Heutchy", role: "Developer" },
+    { name: "Haixin Huang", role: "Developer" },
+    { name: "Evan Taylor", role: "Developer" },
+    { name: "Domenic Federico", role: "Developer" },
 ];
-
-// Srinithi Doddapaneni
-// Trace Macias
-// Liu Jacky
-// Atharv Allepally
-// Vishal Murali Kannan
-// Jake Orchanian
-
 
 const leadershipNames = leadership
     .filter((leader) => !leader.role.toLowerCase().includes("tech lead"))
@@ -218,6 +230,8 @@ const techLeadNames = leadership
 
 const developerNames = members.map((member) => member.name);
 
+const advisorNames = ["Aaron Keen"]
+
 export const teamYears: TeamYear[] = [
     {
         year: "2025-2026",
@@ -227,7 +241,7 @@ export const teamYears: TeamYear[] = [
             productLeads: [],
             developers: developerNames,
             designers: [],
-            advisors: [],
+            advisors: advisorNames,
         },
     },
     {
