@@ -15,7 +15,7 @@ export function CTA() {
                     Apply Now
                 </button>
                 <button
-                    onClick={() => window.open("#", "_blank")}
+                    onClick={() => window.open("https://discord.gg/usSg2WfrFs", "_blank")}
                     className="px-8 py-4 border border-foreground/30 text-foreground rounded-full hover:bg-foreground/10 transition-all font-medium cursor-pointer">
                     Join Discord
                 </button>

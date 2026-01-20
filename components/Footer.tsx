@@ -18,9 +18,9 @@ export function Footer() {
 
     const socialLinks: { icon: IconDefinition; label: string; href: string }[] =
         [
-            { icon: faInstagram, label: "Instagram", href: "#" },
-            { icon: faDiscord, label: "Discord", href: "#" },
-            { icon: faLinkedin, label: "LinkedIn", href: "#" },
+            { icon: faInstagram, label: "Instagram", href: "https://www.instagram.com/codeboxorg?igsh=MzRlODBiNWFlZA==" },
+            { icon: faDiscord, label: "Discord", href: "https://discord.gg/usSg2WfrFs" },
+            { icon: faLinkedin, label: "LinkedIn", href: "https://www.linkedin.com/company/codeboxorg/posts/?feedView=all" },
             {
                 icon: faEnvelopeRegular,
                 label: "Email",
