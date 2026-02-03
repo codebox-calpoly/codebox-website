@@ -3,14 +3,24 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { SlideInButton } from "./ui/SlideInButton";
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navItems = [
     { label: "About", href: "/about" },
@@ -19,7 +29,16 @@ export function Navbar() {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-foreground/10 select-none">
+    <motion.nav
+      className={`fixed top-0 left-0 right-0 z-50 select-none transition-all duration-300 ${
+        scrolled
+          ? "bg-background/90 backdrop-blur-md border-b border-foreground/10"
+          : "bg-transparent border-b border-transparent"
+      }`}
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Link
@@ -141,6 +160,6 @@ export function Navbar() {
           )}
         </AnimatePresence>
       </div>
-    </nav>
+    </motion.nav>
   );
 }
