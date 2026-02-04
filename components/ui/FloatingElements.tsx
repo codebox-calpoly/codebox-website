@@ -9,6 +9,12 @@ export function FloatingElements() {
   const containerRef = useRef(null);
   const pathname = usePathname();
   const [key, setKey] = useState(0);
+  const [mounted, setMounted] = useState(false);
+
+  // Prevent hydration mismatch by only rendering scroll-dependent content on client
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Force re-render when navigating to home page
   useEffect(() => {
@@ -126,15 +132,19 @@ export function FloatingElements() {
         </motion.div>
       ))}
 
-      {/* Ambient glow spots */}
-      <motion.div
-        className="absolute top-1/3 left-1/3 w-48 h-48 bg-[#1bad63]/10 rounded-full blur-[80px]"
-        style={{ scale: scrollScale, opacity: scrollOpacity }}
-      />
-      <motion.div
-        className="absolute bottom-1/3 right-1/3 w-56 h-56 bg-[#22c55e]/10 rounded-full blur-[100px]"
-        style={{ scale: scrollScale, opacity: scrollOpacity }}
-      />
+      {/* Ambient glow spots - only render on client to avoid hydration mismatch */}
+      {mounted && (
+        <>
+          <motion.div
+            className="absolute top-1/3 left-1/3 w-48 h-48 bg-[#1bad63]/10 rounded-full blur-[80px]"
+            style={{ scale: scrollScale, opacity: scrollOpacity }}
+          />
+          <motion.div
+            className="absolute bottom-1/3 right-1/3 w-56 h-56 bg-[#22c55e]/10 rounded-full blur-[100px]"
+            style={{ scale: scrollScale, opacity: scrollOpacity }}
+          />
+        </>
+      )}
     </div>
   );
 }
