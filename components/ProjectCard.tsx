@@ -24,21 +24,23 @@ export function ProjectCard({
   if (featured) {
     return (
       <motion.div
-        className="bg-card rounded-3xl overflow-hidden group border border-foreground/10 hover:border-foreground/20 transition-colors relative"
+        className="bg-card rounded-3xl overflow-hidden group border border-foreground/10 hover:border-foreground/20 transition-colors relative h-full"
         whileHover={{ scale: 1.02, y: -5 }}
         transition={{ type: "spring", stiffness: 300, damping: 20 }}
       >
         {/* Glow effect on hover */}
         <div className="absolute inset-0 bg-gradient-to-r from-accent/10 via-accent/5 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl pointer-events-none" />
 
-        <div className="grid md:grid-cols-2 gap-0 relative z-10">
-          <div className="p-10 flex flex-col justify-center">
-            <h3 className="text-4xl mb-4 text-foreground font-bold">{title}</h3>
-            <p className="text-foreground/70 text-lg leading-relaxed mb-6">
+        <div className="grid md:grid-cols-2 gap-0 relative z-10 h-full">
+          <div className="p-10 flex flex-col justify-center min-h-[280px]">
+            <h3 className="text-3xl lg:text-4xl mb-4 text-foreground font-bold">
+              {title}
+            </h3>
+            <p className="text-foreground/70 text-base lg:text-lg leading-relaxed mb-6 line-clamp-3">
               {description}
             </p>
             <div className="flex flex-wrap gap-2 mb-6">
-              {tags.map((tag) => (
+              {tags.slice(0, 4).map((tag) => (
                 <span
                   key={tag}
                   className="px-3 py-1 bg-foreground/10 text-foreground/80 rounded-full text-xs font-medium"
@@ -52,7 +54,7 @@ export function ProjectCard({
               <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform mt-[2px]" />
             </button>
           </div>
-          <div className="relative h-[400px] md:h-auto overflow-hidden">
+          <div className="relative h-[280px] md:h-full min-h-[280px] overflow-hidden">
             <img
               src={image}
               alt={title}

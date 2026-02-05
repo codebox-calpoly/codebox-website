@@ -173,31 +173,35 @@ export function SlideInButton({
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onClick={onClick}
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
+      whileHover={{ scale: 1.03 }}
+      whileTap={{ scale: 0.97 }}
+      transition={{ type: "spring", stiffness: 400, damping: 30 }}
     >
       {/* Background fill animation - Circle that expands from cursor position */}
       <motion.div
         className="absolute rounded-full pointer-events-none"
         style={{
           background: useGradient ? hoverGradientFrom : hoverBackgroundColor,
-          width: "8px",
-          height: "8px",
+          width: "10px",
+          height: "10px",
           left: mousePos.x,
           top: mousePos.y,
           x: "-50%",
           y: "-50%",
         }}
-        initial={{ scale: 0 }}
         animate={{
-          scale: isHovered ? 20 : 0,
+          scale: isHovered ? 18 : 0,
+          opacity: isHovered ? 1 : 0,
         }}
         transition={{
-          type: "spring",
-          stiffness: 300,
-          damping: 20,
-          bounce: 0.1,
-          duration: 0.5,
+          scale: {
+            type: "spring",
+            stiffness: 250,
+            damping: 25,
+          },
+          opacity: {
+            duration: 0.15,
+          },
         }}
       />
 
