@@ -10,7 +10,7 @@ import { AnimatedSection } from "../ui/AnimatedSection";
 export function Projects() {
   const [activeFilter, setActiveFilter] = useState("All Projects");
 
-  const filters = ["All Projects", "Client", "AI", "Product"];
+  const filters = ["All Projects", "Cal Poly"];
 
   const filteredProjects =
     activeFilter === "All Projects"
