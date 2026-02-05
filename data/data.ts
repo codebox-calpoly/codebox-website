@@ -5,7 +5,7 @@ export type Project = {
     image: string;
     label?: string;
     bgClass: string;
-    category: "Client" | "AI" ;
+    category: "Cal Poly" | "";
     featured?: boolean;
 };
 
@@ -39,56 +39,56 @@ export const projects: Project[] = [
     {
         title: "Aura Farm",
         description:
-            "Reddit is one of the largest and most active form platforms on the internet. We designed an innovative MLK scoreboard experience.",
+            "Social media platform that turns campuses into a weekly challenge map. Users complete real world tasks and activities around campus to earn Aura points and connect with other students.",
         tags: ["UI/UX"],
         image: "https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzb2Z0d2FyZSUyMGRldmVsb3BtZW50JTIwdGVhbXxlbnwxfHx8fDE3NjQ2MjYwNDl8MA&ixlib=rb-4.1.0&q=80&w=1080",
         label: "UI/UX",
-        bgClass: "bg-accent",
-        category: "Client",
+        bgClass: "bg-[var(--project-purple)]",
+        category: "",
         featured: true,
     },
     {
         title: "Mustang Maps",
         description:
-            "Solidigm is a global leader in NAND flash memory solutions. We built a data abstraction pipeline as a part of their AI debugging tool.",
+            "Full-fledged navigation app for Cal Poly students, providing campus routing, ongoing events, and key building details.",
         tags: ["AI/ML", "Backend"],
         image: "https://images.unsplash.com/photo-1731816803705-54ab8fbd6a8f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdHVkZW50JTIwc3R1ZHlpbmclMjBjb21wdXRlcnxlbnwxfHx8fDE3NjQ1ODcxNzh8MA&ixlib=rb-4.1.0&q=80&w=1080",
         label: "AI/ML",
-        bgClass: "bg-[var(--project-purple)]",
-        category: "AI",
+        bgClass: "bg-[var(--project-emerald)]",
+        category: "Cal Poly",
         featured: true,
     },
     {
         title: "Note Sharer",
         description:
-            "Goodnotes is a leading digital note taking platform. We created a proof-of-concept testing platform.",
+            "Campus specific, credit based note sharing platform for Cal Poly students. Users upload course materials to earn credits and spend them to download materials from other students.",
         tags: ["WEB3", "Testing"],
         image: "https://images.unsplash.com/photo-1704699175212-117f10d5b3b4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHxtb2Rlcm4lMjB3ZWIlMjBpbnRlcmZhY2V8ZW58MXx8fHwxNzY0NjU5NzI0fDA&ixlib=rb-4.1.0&q=80&w=1080",
         label: "WEB3",
         bgClass: "bg-chart-2",
-        category: "Client",
+        category: "",
         featured: true,
     },
     {
         title: "Poly Buys",
         description:
-            "Render is a cloud platform designed to simplify the deployment and management of web applications.",
+            "Campus specific marketplace for Cal Poly students to buy and sell items like textbooks, furniture, and event tickets. It centralizes student to student listings in one place.",
         tags: ["UI/UX", "Cloud"],
         image: "https://images.unsplash.com/photo-1688413709025-5f085266935a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHxhYnN0cmFjdCUyMHRlY2hub2xvZ3klMjBwYXR0ZXJufGVufDF8fHx8MTc2NDY1ODk0OXww&ixlib=rb-4.1.0&q=80&w=1080",
         label: "UI/UX",
-        bgClass: "bg-[var(--project-silver)]",
-        category: "Client",
+        bgClass: "bg-[var(--project-pink)]",
+        category: "Cal Poly",
         featured: true,
     },
     {
         title: "Poly Problems",
         description:
-            "AI-powered study assistant that generates personalized learning resources and practice problems based on your curriculum.",
+            "Platform for reporting and discussing Cal Poly campus issues, from maintenance problems to community concerns. Users post updates in a feed and submit reports aimed at improving campus.",
         tags: ["Python", "OpenAI", "React"],
         image: "https://images.unsplash.com/photo-1594892185343-0241e1d47d15?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHxjb2RpbmclMjBjb2xsYWJvcmF0aW9uJTIwd29ya3NwYWNlfGVufDF8fHx8MTc2NDY1OTcyM3ww&ixlib=rb-4.1.0&q=80&w=1080",
         label: "AI/ML",
-        bgClass: "bg-[var(--project-emerald)]",
-        category: "AI",
+        bgClass: "bg-[var(--project-orange)]",
+        category: "Cal Poly",
     },
 ];
 
@@ -166,7 +166,7 @@ export const techLeads: TeamMember[] = [
     { name: "Winnie Trinh ", role: "Tech Lead" },
     { name: "Rohit Kota", role: "Tech Lead" },
     { name: "Rishi Thakkar", role: "Tech Lead" },
-]
+];
 
 export const members: TeamMember[] = [
     { name: "Srinithi Doddapaneni", role: "Developer" },
@@ -209,7 +209,7 @@ export const productManagers: TeamMember[] = [
     { name: "Anthony Orozco", role: "Product Manager" },
     { name: "Harry Obraztsov ", role: "Product Manager" },
     { name: "Evan Taylor", role: "Product Manager" },
-]
+];
 
 export const designers: TeamMember[] = [
     { name: "Hannah Moshtagi", role: "Designers" },
@@ -217,7 +217,7 @@ export const designers: TeamMember[] = [
     { name: "Isaiah Cortez ", role: "Designers" },
     { name: "Isaac Tsai", role: "Designers" },
     { name: "Chanelle Friend", role: "Designers" },
-]	
+];
 
 const leadershipNames = leadership
     .filter((leader) => !leader.role.toLowerCase().includes("tech lead"))
@@ -231,7 +231,7 @@ const leadNames = productManagers.map((member) => member.name);
 
 const designerNames = designers.map((member) => member.name);
 
-const advisorNames = ["Aaron Keen"]
+const advisorNames = ["Aaron Keen"];
 
 export const teamYears: TeamYear[] = [
     {
@@ -243,28 +243,6 @@ export const teamYears: TeamYear[] = [
             developers: developerNames,
             designers: designerNames,
             advisors: advisorNames,
-        },
-    },
-    {
-        year: "2024-2025",
-        sections: {
-            leadership: [],
-            techLeads: [],
-            productLeads: [],
-            developers: [],
-            designers: [],
-            advisors: [],
-        },
-    },
-    {
-        year: "2023-2024",
-        sections: {
-            leadership: [],
-            techLeads: [],
-            productLeads: [],
-            developers: [],
-            designers: [],
-            advisors: [],
         },
     },
 ];
