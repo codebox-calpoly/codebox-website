@@ -76,9 +76,20 @@ export function Home() {
     offset: ["start end", "end start"],
   });
 
-  const y1 = useTransform(scrollYProgress, [0, 1], [80, -80]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [40, -120]);
-  const y3 = useTransform(scrollYProgress, [0, 1], [120, -40]);
+  // Image 1 (top-right): drifts from right
+  const y1 = useTransform(scrollYProgress, [0, 1], [60, -60]);
+  const x1 = useTransform(scrollYProgress, [0, 1], [80, -30]);
+  const o1 = useTransform(scrollYProgress, [0, 0.15, 0.8, 1], [0, 1, 1, 0]);
+
+  // Image 2 (left): drifts from left
+  const y2 = useTransform(scrollYProgress, [0, 1], [40, -80]);
+  const x2 = useTransform(scrollYProgress, [0, 1], [-70, 30]);
+  const o2 = useTransform(scrollYProgress, [0, 0.1, 0.75, 1], [0, 1, 1, 0]);
+
+  // Image 3 (bottom-right): drifts up
+  const y3 = useTransform(scrollYProgress, [0, 1], [100, -40]);
+  const x3 = useTransform(scrollYProgress, [0, 1], [40, -40]);
+  const o3 = useTransform(scrollYProgress, [0, 0.2, 0.85, 1], [0, 1, 1, 0]);
 
   const stats = [
     { value: 50, suffix: "+", label: "Members" },
@@ -429,7 +440,7 @@ export function Home() {
             <div className="relative h-[500px] hidden lg:block">
               <motion.div
                 className="absolute top-0 right-0 w-[240px] aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl will-change-transform"
-                style={{ y: y1 }}
+                style={{ y: y1, x: x1, opacity: o1 }}
               >
                 <Image
                   src="/codebox-1.jpg"
@@ -440,7 +451,7 @@ export function Home() {
               </motion.div>
               <motion.div
                 className="absolute top-24 left-0 w-[200px] aspect-square rounded-2xl overflow-hidden shadow-2xl will-change-transform"
-                style={{ y: y2 }}
+                style={{ y: y2, x: x2, opacity: o2 }}
               >
                 <Image
                   src="/codebox-3.jpg"
@@ -451,7 +462,7 @@ export function Home() {
               </motion.div>
               <motion.div
                 className="absolute bottom-0 right-16 w-[220px] aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl will-change-transform"
-                style={{ y: y3 }}
+                style={{ y: y3, x: x3, opacity: o3 }}
               >
                 <Image
                   src="/codebox-5.jpg"

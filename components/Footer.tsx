@@ -58,8 +58,8 @@ export function Footer() {
               </span>
             </Link>
             <p className="text-foreground/40 text-sm max-w-xs leading-relaxed">
-              Cal Poly&apos;s premier student-run software engineering club.
-              Building real products, shipping real code.
+              Cal Poly&apos;s student-run project accelerator.
+              Turning innovative ideas into real software.
             </p>
           </div>
 
