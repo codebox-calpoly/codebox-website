@@ -31,7 +31,7 @@ export function Navbar() {
     return (
         <motion.nav
             className={`fixed top-0 left-0 right-0 z-50 select-none transition-all duration-300 ${
-                scrolled
+                scrolled || mobileMenuOpen
                     ? "bg-background/75 backdrop-blur-md border-b border-foreground/10"
                     : "bg-transparent border-b border-transparent"
             }`}
