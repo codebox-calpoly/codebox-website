@@ -88,7 +88,7 @@ export function Home() {
               <SlideInButton
                 variant="large"
                 buttonText="Apply Now"
-                link="#"
+                link="/interest"
                 useGradient={true}
                 gradientFrom="#1bad63"
                 gradientTo="#16a057"
