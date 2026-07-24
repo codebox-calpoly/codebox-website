@@ -28,6 +28,17 @@ export function Navbar() {
         { label: "Team", href: "/team" },
     ];
 
+    const applyButtonProps = {
+        useGradient: true,
+        gradientFrom: "#1bad63",
+        gradientTo: "#16a057",
+        hoverGradientFrom: "#16a057",
+        defaultTextColor: "#ffffff",
+        hoverTextColor: "#ffffff",
+        iconName: "Rocket" as const,
+        link: "/interest",
+    };
+
     return (
         <motion.nav
             className={`fixed top-0 left-0 right-0 z-50 select-none transition-all duration-300 ${
@@ -84,14 +95,7 @@ export function Navbar() {
                         <SlideInButton
                             variant="small"
                             buttonText="Apply"
-                            useGradient={true}
-                            gradientFrom="#1bad63"
-                            gradientTo="#16a057"
-                            hoverGradientFrom="#16a057"
-                            defaultTextColor="#ffffff"
-                            hoverTextColor="#ffffff"
-                            iconName="Rocket"
-                            onClick={() => window.open("#", "_blank")}
+                            {...applyButtonProps}
                         />
                     </div>
 
@@ -147,15 +151,9 @@ export function Navbar() {
                                     <SlideInButton
                                         variant="medium"
                                         buttonText="Apply"
-                                        useGradient={true}
-                                        gradientFrom="#1bad63"
-                                        gradientTo="#16a057"
-                                        hoverGradientFrom="#16a057"
-                                        defaultTextColor="#ffffff"
-                                        hoverTextColor="#ffffff"
-                                        iconName="Rocket"
+                                        {...applyButtonProps}
                                         onClick={() =>
-                                            window.open("#", "_blank")
+                                            setMobileMenuOpen(false)
                                         }
                                     />
                                 </motion.div>
