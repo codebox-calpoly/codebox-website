@@ -31,6 +31,7 @@ export function CTA() {
         <SlideInButton
           variant="large"
           buttonText="Apply Now"
+          link="/interest"
           useGradient={true}
           gradientFrom="#1bad63"
           gradientTo="#16a057"
@@ -38,7 +39,6 @@ export function CTA() {
           defaultTextColor="#ffffff"
           hoverTextColor="#ffffff"
           iconName="Rocket"
-          onClick={() => window.open("#", "_blank")}
         />
         <SlideInButton
           variant="large"
