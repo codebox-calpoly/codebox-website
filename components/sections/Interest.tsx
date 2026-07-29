@@ -1,8 +1,7 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
-import { CheckCircle2, Loader2, Upload } from "lucide-react";
+import { CheckCircle2, Loader2 } from "lucide-react";
 import { useForm, ValidationError } from "@formspree/react";
 import { AnimatedSection } from "../ui/AnimatedSection";
 
@@ -64,7 +63,6 @@ const errorClasses = "text-destructive text-sm mt-1";
 
 export function Interest() {
   const [state, handleSubmit] = useForm<InterestFormFields>(FORMSPREE_FORM_ID);
-  const [resumeFileName, setResumeFileName] = useState<string>("");
 
   const formErrors = state.errors?.getFormErrors() ?? [];
 
@@ -307,30 +305,23 @@ export function Interest() {
                 />
               </div>
 
-              {/* Resume upload */}
+              {/* Resume link */}
               <div>
                 <label htmlFor="resume" className={labelClasses}>
-                  Resume (optional)
-                </label>
-                <label
-                  htmlFor="resume"
-                  className="flex items-center gap-3 rounded-xl bg-input-background border border-dashed border-border px-4 py-4 cursor-pointer hover:border-foreground/30 transition-colors"
-                >
-                  <Upload className="w-5 h-5 text-foreground/50 shrink-0" />
-                  <span className="text-foreground/60 text-sm truncate">
-                    {resumeFileName || "PDF, DOC, or DOCX — click to upload"}
-                  </span>
+                  Resume Link (optional)
                 </label>
                 <input
                   id="resume"
                   name="resume"
-                  type="file"
-                  accept=".pdf,.doc,.docx"
-                  className="hidden"
-                  onChange={(e) =>
-                    setResumeFileName(e.target.files?.[0]?.name ?? "")
-                  }
+                  type="url"
+                  className={inputClasses}
+                  placeholder="https://drive.google.com/... or your LinkedIn profile"
                 />
+                <p className="text-foreground/40 text-xs mt-2">
+                  Paste a link to your resume (Google Drive, Dropbox,
+                  LinkedIn, etc.) — make sure it&apos;s set to
+                  &quot;Anyone with the link can view.&quot;
+                </p>
                 <ValidationError
                   prefix="Resume"
                   field="resume"
