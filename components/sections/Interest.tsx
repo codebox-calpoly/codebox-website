@@ -3,25 +3,9 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { CheckCircle2, Loader2, Upload } from "lucide-react";
-import { useForm, ValidationError } from "@formspree/react";
 import { AnimatedSection } from "../ui/AnimatedSection";
 
-const FORMSPREE_FORM_ID = "mbdnzykq";
-
-type InterestFormFields = {
-  fullName: string;
-  email: string;
-  phone?: string;
-  linkedinOrGithub?: string;
-  yearInSchool: string;
-  major: string;
-  experienceLevel?: string;
-  interestAreas?: string[];
-  whyInterested: string;
-  resume?: string;
-  heardAbout?: string;
-  questions?: string;
-};
+const MAX_RESUME_BYTES = 4 * 1024 * 1024;
 
 const YEAR_OPTIONS = [
   "Freshman",
@@ -60,15 +44,59 @@ const inputClasses =
 
 const labelClasses = "block text-foreground text-sm font-medium mb-2";
 
-const errorClasses = "text-destructive text-sm mt-1";
+type Status = "idle" | "submitting" | "success" | "error";
 
 export function Interest() {
-  const [state, handleSubmit] = useForm<InterestFormFields>(FORMSPREE_FORM_ID);
-  const [resumeFileName, setResumeFileName] = useState<string>("");
+  const [status, setStatus] = useState<Status>("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [resumeFileName, setResumeFileName] = useState("");
 
-  const formErrors = state.errors?.getFormErrors() ?? [];
+  const handleResumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
 
-  if (state.succeeded) {
+    if (file && file.size > MAX_RESUME_BYTES) {
+      setErrorMessage("Resume must be smaller than 4 MB.");
+      setStatus("error");
+      e.target.value = "";
+      setResumeFileName("");
+      return;
+    }
+
+    setResumeFileName(file?.name ?? "");
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus("submitting");
+    setErrorMessage("");
+
+    const form = e.currentTarget;
+
+    try {
+      const response = await fetch("/api/interest", {
+        method: "POST",
+        body: new FormData(form),
+      });
+
+      if (response.ok) {
+        setStatus("success");
+        return;
+      }
+
+      const body = await response.json().catch(() => null);
+      setErrorMessage(
+        body?.error ?? "Something went wrong. Please try again.",
+      );
+      setStatus("error");
+    } catch {
+      setErrorMessage(
+        "We could not reach the server. Check your connection and try again.",
+      );
+      setStatus("error");
+    }
+  };
+
+  if (status === "success") {
     return (
       <div className="min-h-screen bg-background pt-16 flex items-center justify-center">
         <motion.div
@@ -137,12 +165,6 @@ export function Interest() {
                     className={inputClasses}
                     placeholder="Jane Doe"
                   />
-                  <ValidationError
-                    prefix="Full Name"
-                    field="fullName"
-                    errors={state.errors}
-                    className={errorClasses}
-                  />
                 </div>
                 <div>
                   <label htmlFor="email" className={labelClasses}>
@@ -155,12 +177,6 @@ export function Interest() {
                     required
                     className={inputClasses}
                     placeholder="jane@calpoly.edu"
-                  />
-                  <ValidationError
-                    prefix="Email"
-                    field="email"
-                    errors={state.errors}
-                    className={errorClasses}
                   />
                 </div>
               </div>
@@ -214,12 +230,6 @@ export function Interest() {
                       </option>
                     ))}
                   </select>
-                  <ValidationError
-                    prefix="Year in School"
-                    field="yearInSchool"
-                    errors={state.errors}
-                    className={errorClasses}
-                  />
                 </div>
                 <div>
                   <label htmlFor="major" className={labelClasses}>
@@ -232,12 +242,6 @@ export function Interest() {
                     required
                     className={inputClasses}
                     placeholder="Computer Science"
-                  />
-                  <ValidationError
-                    prefix="Major"
-                    field="major"
-                    errors={state.errors}
-                    className={errorClasses}
                   />
                 </div>
               </div>
@@ -299,12 +303,6 @@ export function Interest() {
                   className={inputClasses}
                   placeholder="Tell us what draws you to the club and what you're hoping to get out of it..."
                 />
-                <ValidationError
-                  prefix="This field"
-                  field="whyInterested"
-                  errors={state.errors}
-                  className={errorClasses}
-                />
               </div>
 
               {/* Resume upload */}
@@ -318,7 +316,7 @@ export function Interest() {
                 >
                   <Upload className="w-5 h-5 text-foreground/50 shrink-0" />
                   <span className="text-foreground/60 text-sm truncate">
-                    {resumeFileName || "PDF, DOC, or DOCX — click to upload"}
+                    {resumeFileName || "PDF, DOC, or DOCX (max 4 MB) — click to upload"}
                   </span>
                 </label>
                 <input
@@ -327,15 +325,7 @@ export function Interest() {
                   type="file"
                   accept=".pdf,.doc,.docx"
                   className="hidden"
-                  onChange={(e) =>
-                    setResumeFileName(e.target.files?.[0]?.name ?? "")
-                  }
-                />
-                <ValidationError
-                  prefix="Resume"
-                  field="resume"
-                  errors={state.errors}
-                  className={errorClasses}
+                  onChange={handleResumeChange}
                 />
               </div>
 
@@ -375,21 +365,21 @@ export function Interest() {
                 />
               </div>
 
-              {formErrors.length > 0 && (
-                <p className={errorClasses}>
-                  {formErrors.map((error) => error.message).join(" ")}
-                </p>
+              {status === "error" && errorMessage && (
+                <p className="text-destructive text-sm">{errorMessage}</p>
               )}
 
               <button
                 type="submit"
-                disabled={state.submitting}
+                disabled={status === "submitting"}
                 className="w-full flex items-center justify-center gap-2 rounded-full bg-accent hover:bg-[#16a057] text-accent-foreground font-semibold py-4 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                {state.submitting && (
+                {status === "submitting" && (
                   <Loader2 className="w-4 h-4 animate-spin" />
                 )}
-                {state.submitting ? "Submitting..." : "Submit Application"}
+                {status === "submitting"
+                  ? "Submitting..."
+                  : "Submit Application"}
               </button>
             </form>
           </AnimatedSection>
