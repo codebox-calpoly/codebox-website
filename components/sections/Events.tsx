@@ -41,7 +41,7 @@ function EventRow({ event, index }: { event: ClubEvent; index: number }) {
     return (
         <AnimatedSection delay={Math.min(index * 0.05, 0.2)}>
             <div className="grid grid-cols-[auto_1fr] gap-5 md:gap-12 items-start md:items-end">
-                <div className="w-14 md:w-32 text-center md:text-left">
+                <div className="w-16 md:w-44 text-center md:text-left">
                     <div className="text-4xl md:text-[7rem] leading-none font-extrabold bg-gradient-to-b from-accent to-accent-dark bg-clip-text text-transparent select-none">
                         {date.getDate()}
                     </div>

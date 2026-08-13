@@ -254,7 +254,7 @@ export const events: ClubEvent[] = [
     },
     {
         date: "2026-09-01",
-        name: "Speed Dating Social with CIE",
+        name: "Speed Dating Social with the Center for Innovation & Entrepreneurship",
         time: "6:00 PM",
         tags: ["Week of CodeBox", "Food Provided"],
     },

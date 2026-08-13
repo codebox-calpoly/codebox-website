@@ -107,20 +107,20 @@ function HowItWorks() {
                     </p>
                 </AnimatedSection>
 
-                <div className="mt-16 flex flex-col gap-20">
+                <div className="mt-12 md:mt-16 flex flex-col gap-12 md:gap-20">
                     {steps.map((step, i) => (
                         <AnimatedSection key={step.number} delay={i * 0.05}>
-                            <div className="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-6 md:gap-12 items-end">
+                            <div className="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-4 md:gap-12 items-end">
                                 <div>
-                                    <div className="text-[7rem] leading-none font-extrabold bg-gradient-to-b from-accent to-accent-dark bg-clip-text text-transparent select-none">
+                                    <div className="text-6xl md:text-[7rem] leading-none font-extrabold bg-gradient-to-b from-accent to-accent-dark bg-clip-text text-transparent select-none">
                                         {step.number}
                                     </div>
-                                    <div className="mt-2 text-2xl font-extrabold tracking-wide uppercase">
+                                    <div className="mt-2 text-xl md:text-2xl font-extrabold tracking-wide uppercase">
                                         {step.title}
                                     </div>
                                 </div>
-                                <div className="border-b border-white/40 pb-4 md:text-right">
-                                    <p className="text-lg text-white/80 md:max-w-md md:ml-auto">
+                                <div className="border-b border-white/25 md:border-white/40 pb-4 md:text-right">
+                                    <p className="text-base md:text-lg text-white/80 md:max-w-md md:ml-auto">
                                         {step.description}
                                     </p>
                                 </div>

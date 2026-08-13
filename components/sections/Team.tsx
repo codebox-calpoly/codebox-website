@@ -41,21 +41,21 @@ function Leadership() {
                     </p>
                 </AnimatedSection>
 
-                <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="mt-12 grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
                     {leadership.map((member, i) => (
                         <AnimatedSection
                             key={member.name}
                             delay={Math.min(i * 0.05, 0.3)}>
-                            <div className="rounded-3xl bg-card border border-white/10 p-6 text-center transition-colors hover:border-white/25">
-                                <div className="mx-auto w-28 h-28 rounded-full bg-white/90 flex items-center justify-center">
-                                    <span className="text-3xl font-extrabold text-black/80">
+                            <div className="h-full rounded-3xl bg-card border border-white/10 p-4 md:p-6 text-center transition-colors hover:border-white/25">
+                                <div className="mx-auto w-20 h-20 md:w-28 md:h-28 rounded-full bg-white/90 flex items-center justify-center">
+                                    <span className="text-2xl md:text-3xl font-extrabold text-black/80">
                                         {initials(member.name)}
                                     </span>
                                 </div>
-                                <h3 className="mt-5 text-lg font-bold">
+                                <h3 className="mt-4 md:mt-5 text-base md:text-lg font-bold">
                                     {member.name}
                                 </h3>
-                                <p className="mt-1 text-sm text-white/70">
+                                <p className="mt-1 text-xs md:text-sm text-white/70">
                                     {member.role}
                                 </p>
                                 <div className="mt-4 flex justify-center gap-3">
@@ -94,14 +94,14 @@ function Leadership() {
                         delay={Math.min(leadership.length * 0.05, 0.35)}>
                         <Link
                             href="/interest"
-                            className="group flex h-full flex-col items-center justify-center rounded-3xl border border-dashed border-accent/50 bg-card/40 p-6 text-center transition-colors hover:border-accent">
-                            <div className="w-28 h-28 rounded-full bg-gradient-to-br from-accent to-accent-dark flex items-center justify-center">
-                                <UserPlus className="w-10 h-10 text-white" />
+                            className="group flex h-full flex-col items-center justify-center rounded-3xl border border-dashed border-accent/50 bg-card/40 p-4 md:p-6 text-center transition-colors hover:border-accent">
+                            <div className="w-20 h-20 md:w-28 md:h-28 rounded-full bg-gradient-to-br from-accent to-accent-dark flex items-center justify-center">
+                                <UserPlus className="w-8 h-8 md:w-10 md:h-10 text-white" />
                             </div>
-                            <h3 className="mt-5 text-lg font-bold">
+                            <h3 className="mt-4 md:mt-5 text-base md:text-lg font-bold">
                                 This Could Be You!
                             </h3>
-                            <p className="mt-1 text-sm text-white/70">
+                            <p className="mt-1 text-xs md:text-sm text-white/70">
                                 We&rsquo;re always looking for new leaders
                             </p>
                             <span className="mt-4 inline-flex items-center gap-2 text-accent font-medium">

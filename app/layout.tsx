@@ -15,13 +15,18 @@ const gabarito = Gabarito({
 });
 
 export const metadata: Metadata = {
-    title: "CodeBox",
-    description: "CodeBox - Cal Poly Computer Science Club",
-    metadataBase: new URL("https://codebox.calpoly.edu"),
+    title: {
+        default: "CodeBox",
+        template: "%s | CodeBox",
+    },
+    description:
+        "CodeBox is Cal Poly's student-run software engineering club. We design, build, and ship real web and mobile products every year.",
+    metadataBase: new URL("https://codebox.so"),
     openGraph: {
-        images: "/codeboxlogo2nobg.png",
+        images: "/og-image.png",
         title: "CodeBox",
-        description: "Cal Poly Computer Science Club",
+        description:
+            "Cal Poly's student-run software engineering club. Build cool things, gain real experience, grow together.",
         type: "website",
     },
     icons: {
