@@ -34,7 +34,7 @@ return vec2(p.x * c - p.y * s, p.x * s + p.y * c);
 return vec2(0.5, 0.5);
 }vec4 sampleImage(vec2 canvasUV, vec2 mouseOffset, vec2 mouseRotOffset) {
 vec2 canvasPos = vec2(canvasUV.x * uArtboardResolution.x, (1.0 - canvasUV.y) * uArtboardResolution.y);
-vec2 imageUV;float absWidth = 600.0000;
+vec2 imageUV;float absWidth = min(600.0000, uArtboardResolution.x * 0.66);
 float absHeight = 367.3105 * uArtboardResolution.y;
 absWidth = absWidth;
 absHeight = (1 != 2 && 2 == 2) ? absWidth / 1.6335 : absHeight;vec2 elementSizePx = vec2(absWidth, absHeight);
