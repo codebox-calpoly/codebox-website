@@ -3,165 +3,110 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { SlideInButton } from "./ui/SlideInButton";
+
+const navItems = [
+    { label: "About", href: "/about" },
+    { label: "Projects", href: "/projects" },
+    { label: "Team", href: "/team" },
+    { label: "Join", href: "/join" },
+];
 
 export function Navbar() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-    const [scrolled, setScrolled] = useState(false);
     const pathname = usePathname();
 
-    useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 50);
-        };
-
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
-
-    const navItems = [
-        { label: "About", href: "/about" },
-        { label: "Projects", href: "/projects" },
-        { label: "Team", href: "/team" },
-    ];
-
-    const applyButtonProps = {
-        useGradient: true,
-        gradientFrom: "#1bad63",
-        gradientTo: "#16a057",
-        hoverGradientFrom: "#16a057",
-        defaultTextColor: "#ffffff",
-        hoverTextColor: "#ffffff",
-        iconName: "Rocket" as const,
-        link: "/interest",
-    };
-
     return (
-        <motion.nav
-            className={`fixed top-0 left-0 right-0 z-50 select-none transition-all duration-300 ${
-                scrolled || mobileMenuOpen
-                    ? "bg-background/75 backdrop-blur-md border-b border-foreground/10"
-                    : "bg-transparent border-b border-transparent"
-            }`}
+        <motion.header
+            className="fixed top-0 left-0 right-0 z-50 select-none px-4 pt-4 sm:px-6"
             initial={{ y: -100 }}
             animate={{ y: 0 }}
             transition={{ duration: 0.5 }}>
-            <div className="max-w-7xl mx-auto px-6 lg:px-8">
-                <div className="flex items-center justify-between h-16">
+            <nav className="max-w-5xl mx-auto rounded-[2.5rem] border border-white/15 bg-black/60 backdrop-blur-md">
+                <div className="flex items-center justify-between h-16 pl-6 pr-3 sm:pl-8 sm:pr-4">
                     <Link
                         href="/"
-                        className="text-foreground hover:opacity-80 transition-opacity h-16 flex items-center bg-transparent px-4 -ml-6"
-                        aria-label="Go to home">
-                        <motion.div
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}>
-                            <Image
-                                src="/codebox.png"
-                                alt="Codebox"
-                                width={50}
-                                height={50}
-                                className="select-none"
-                            />
-                        </motion.div>
+                        aria-label="Go to home"
+                        className="flex items-center hover:opacity-80 transition-opacity">
+                        <Image
+                            src="/codebox.png"
+                            alt="CodeBox"
+                            width={46}
+                            height={28}
+                            className="select-none w-[46px] h-auto"
+                        />
                     </Link>
 
-                    <div className="hidden md:flex items-center gap-8">
+                    <div className="hidden md:flex items-center gap-10">
                         {navItems.map((item) => (
                             <Link
                                 key={item.href}
                                 href={item.href}
-                                className={`transition-colors text-sm font-normal relative ${
+                                className={`text-base font-medium transition-colors ${
                                     pathname === item.href
-                                        ? "text-foreground"
-                                        : "text-foreground/70 hover:text-foreground"
+                                        ? "text-accent"
+                                        : "text-white hover:text-accent"
                                 }`}>
                                 {item.label}
-                                {pathname === item.href && (
-                                    <motion.div
-                                        className="absolute -bottom-1 left-0 right-0 h-[2px] bg-accent"
-                                        layoutId="navbar-underline"
-                                        transition={{
-                                            type: "spring",
-                                            stiffness: 350,
-                                            damping: 30,
-                                        }}
-                                    />
-                                )}
                             </Link>
                         ))}
-                        <SlideInButton
-                            variant="small"
-                            buttonText="Apply"
-                            {...applyButtonProps}
-                        />
                     </div>
 
-                    <motion.button
+                    <div className="hidden md:block">
+                        <Link
+                            href="/interest"
+                            className="inline-flex items-center rounded-full bg-accent px-6 py-2.5 text-sm font-bold tracking-wide text-white uppercase transition-all duration-300 hover:bg-[var(--codebox-green-hover)] hover:scale-[1.03]">
+                            I&rsquo;m Interested
+                        </Link>
+                    </div>
+
+                    <button
                         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                        className="md:hidden p-2 text-foreground"
-                        aria-label="Toggle menu"
-                        whileTap={{ scale: 0.9 }}>
+                        className="md:hidden p-2 text-white"
+                        aria-label="Toggle menu">
                         {mobileMenuOpen ? (
                             <X className="w-5 h-5" />
                         ) : (
                             <Menu className="w-5 h-5" />
                         )}
-                    </motion.button>
+                    </button>
                 </div>
 
                 <AnimatePresence>
                     {mobileMenuOpen && (
                         <motion.div
-                            className="md:hidden py-6 border-t border-foreground/10"
+                            className="md:hidden overflow-hidden border-t border-white/10"
                             initial={{ opacity: 0, height: 0 }}
                             animate={{ opacity: 1, height: "auto" }}
                             exit={{ opacity: 0, height: 0 }}
                             transition={{ duration: 0.2 }}>
-                            <div className="flex flex-col gap-4">
-                                {navItems.map((item, index) => (
-                                    <motion.div
+                            <div className="flex flex-col gap-1 px-6 py-4">
+                                {navItems.map((item) => (
+                                    <Link
                                         key={item.href}
-                                        initial={{ opacity: 0, x: -20 }}
-                                        animate={{ opacity: 1, x: 0 }}
-                                        transition={{ delay: index * 0.1 }}>
-                                        <Link
-                                            href={item.href}
-                                            className={`text-left py-2 transition-colors text-sm font-normal block ${
-                                                pathname === item.href
-                                                    ? "text-foreground"
-                                                    : "text-foreground/70"
-                                            }`}
-                                            onClick={() =>
-                                                setMobileMenuOpen(false)
-                                            }>
-                                            {item.label}
-                                        </Link>
-                                    </motion.div>
+                                        href={item.href}
+                                        onClick={() => setMobileMenuOpen(false)}
+                                        className={`py-2 text-base font-medium ${
+                                            pathname === item.href
+                                                ? "text-accent"
+                                                : "text-white/80"
+                                        }`}>
+                                        {item.label}
+                                    </Link>
                                 ))}
-                                <motion.div
-                                    initial={{ opacity: 0, x: -20 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{
-                                        delay: navItems.length * 0.1,
-                                    }}
-                                    className="mt-2">
-                                    <SlideInButton
-                                        variant="medium"
-                                        buttonText="Apply"
-                                        {...applyButtonProps}
-                                        onClick={() =>
-                                            setMobileMenuOpen(false)
-                                        }
-                                    />
-                                </motion.div>
+                                <Link
+                                    href="/interest"
+                                    onClick={() => setMobileMenuOpen(false)}
+                                    className="mt-2 mb-2 inline-flex w-fit items-center rounded-full bg-accent px-6 py-2.5 text-sm font-bold tracking-wide text-white uppercase">
+                                    I&rsquo;m Interested
+                                </Link>
                             </div>
                         </motion.div>
                     )}
                 </AnimatePresence>
-            </div>
-        </motion.nav>
+            </nav>
+        </motion.header>
     );
 }

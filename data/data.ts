@@ -1,12 +1,39 @@
 export type Project = {
     title: string;
     description: string;
-    tags: string[];
     image: string;
-    label?: string;
-    bgClass: string;
-    category: "Cal Poly" | "";
+    year: string;
+    category: "web" | "mobile";
+    link?: string;
     featured?: boolean;
+};
+
+export type Role = {
+    key: string;
+    title: string;
+    description: string;
+};
+
+export type Service = {
+    title: string;
+    description: string;
+};
+
+export type Faq = {
+    question: string;
+    answer: string;
+};
+
+export type Step = {
+    number: string;
+    title: string;
+    description: string;
+};
+
+export type CoreValue = {
+    title: string;
+    description: string;
+    image: string;
 };
 
 export type LeadershipMember = {
@@ -37,62 +64,249 @@ export type TeamYear = {
 
 export const projects: Project[] = [
     {
-        title: "Aura Farm",
-        description:
-            "Social media platform that turns campuses into a weekly challenge map. Users complete real world tasks and activities around campus to earn Aura points and connect with other students.",
-        tags: ["UI/UX"],
-        image: "https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzb2Z0d2FyZSUyMGRldmVsb3BtZW50JTIwdGVhbXxlbnwxfHx8fDE3NjQ2MjYwNDl8MA&ixlib=rb-4.1.0&q=80&w=1080",
-        label: "UI/UX",
-        bgClass: "bg-[var(--project-purple)]",
-        category: "",
-        featured: true,
-    },
-    {
         title: "Mustang Maps",
         description:
-            "Full-fledged navigation app for Cal Poly students, providing campus routing, ongoing events, and key building details.",
-        tags: ["AI/ML", "Backend"],
-        image: "https://images.unsplash.com/photo-1731816803705-54ab8fbd6a8f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdHVkZW50JTIwc3R1ZHlpbmclMjBjb21wdXRlcnxlbnwxfHx8fDE3NjQ1ODcxNzh8MA&ixlib=rb-4.1.0&q=80&w=1080",
-        label: "AI/ML",
-        bgClass: "bg-[var(--project-emerald)]",
-        category: "Cal Poly",
-        featured: true,
-    },
-    {
-        title: "Note Sharer",
-        description:
-            "Campus specific, credit based note sharing platform for Cal Poly students. Users upload course materials to earn credits and spend them to download materials from other students.",
-        tags: ["WEB3", "Testing"],
-        image: "https://images.unsplash.com/photo-1704699175212-117f10d5b3b4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHxtb2Rlcm4lMjB3ZWIlMjBpbnRlcmZhY2V8ZW58MXx8fHwxNzY0NjU5NzI0fDA&ixlib=rb-4.1.0&q=80&w=1080",
-        label: "WEB3",
-        bgClass: "bg-chart-2",
-        category: "",
-        featured: true,
-    },
-    {
-        title: "Poly Buys",
-        description:
-            "Campus specific marketplace for Cal Poly students to buy and sell items like textbooks, furniture, and event tickets. It centralizes student to student listings in one place.",
-        tags: ["UI/UX", "Cloud"],
-        image: "https://images.unsplash.com/photo-1688413709025-5f085266935a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHxhYnN0cmFjdCUyMHRlY2hub2xvZ3klMjBwYXR0ZXJufGVufDF8fHx8MTc2NDY1ODk0OXww&ixlib=rb-4.1.0&q=80&w=1080",
-        label: "UI/UX",
-        bgClass: "bg-[var(--project-pink)]",
-        category: "Cal Poly",
+            "Full-fledged navigation app for Cal Poly students, providing campus shortcuts and amenity location.",
+        image: "/projects/mustang-maps.png",
+        year: "2026",
+        category: "mobile",
+        link: "https://mustang-maps-landing-page.vercel.app/",
         featured: true,
     },
     {
         title: "Poly Problems",
         description:
-            "Platform for reporting and discussing Cal Poly campus issues, from maintenance problems to community concerns. Users post updates in a feed and submit reports aimed at improving campus.",
-        tags: ["Python", "OpenAI", "React"],
-        image: "https://images.unsplash.com/photo-1594892185343-0241e1d47d15?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHxjb2RpbmclMjBjb2xsYWJvcmF0aW9uJTIwd29ya3NwYWNlfGVufDF8fHx8MTc2NDY1OTcyM3ww&ixlib=rb-4.1.0&q=80&w=1080",
-        label: "AI/ML",
-        bgClass: "bg-[var(--project-orange)]",
-        category: "Cal Poly",
+            "Mobile app platform for reporting and discussing Cal Poly campus issues.",
+        image: "/projects/poly-problems.png",
+        year: "2026",
+        category: "mobile",
+        link: "https://www.polyproblems.com/",
+        featured: true,
+    },
+    {
+        title: "Poly Pages",
+        description:
+            "Campus specific, credit based note sharing platform for Cal Poly students. Share notes, earn credits, learn together.",
+        image: "/projects/poly-pages.png",
+        year: "2026",
+        category: "web",
+        link: "https://www.polypages.dev/",
+    },
+    {
+        title: "Aura Farm",
+        description:
+            "Social media platform that turns campuses into a weekly challenge map. Complete real world tasks around campus to earn Aura points.",
+        image: "/projects/aura-farm.png",
+        year: "2026",
+        category: "mobile",
+        link: "https://www.aurafarm.codebox.so/",
+    },
+    {
+        title: "Poly Buys",
+        description:
+            "Campus specific marketplace for Cal Poly students to buy and sell items like textbooks, furniture, and event tickets. It centralizes student to student listings in one place.",
+        image: "/projects/poly-buys.png",
+        year: "2026",
+        category: "web",
+        link: "https://app.polybuys.com/",
+    },
+];
+
+export const services: Service[] = [
+    {
+        title: "Web Development",
+        description:
+            "We craft custom websites built for speed, scalability, and seamless user experiences, from sleek landing pages to full-stack platforms.",
+    },
+    {
+        title: "Mobile Applications",
+        description:
+            "We bring solution-forward mobile app visions to life using modern native and cross-platform frameworks.",
+    },
+    {
+        title: "AI & Machine Learning",
+        description:
+            "Build intelligent applications that employ AI technologies to solve real-world problems on campus and beyond.",
+    },
+];
+
+export const roles: Role[] = [
+    {
+        key: "developer",
+        title: "Developer",
+        description:
+            "As a developer, your primary role will be to contribute code to your team's software project. You will have the opportunity to work on an interdisciplinary team with a project manager and designers.",
+    },
+    {
+        key: "product-manager",
+        title: "Product Manager",
+        description:
+            "As a product manager, you will be leading a team of developers and designers to build out a software project over the course of the term. You will be heavily involved in the organization of the project and be a main driver in the team's success.",
+    },
+    {
+        key: "tech-lead",
+        title: "Tech Lead",
+        description:
+            "As a tech lead, you will be leading a team of developers to flesh out product software over the course of the year. You will be heavily involved in the development of the project and be a main driver in the team's success.",
+    },
+    {
+        key: "designer",
+        title: "Designer",
+        description:
+            "As a designer, your primary role will be to apply the UX design process to create wireframes for projects. You will have the opportunity to collaborate & work with an interdisciplinary team of developers.",
+    },
+    {
+        key: "marketing-associate",
+        title: "Marketing Associate",
+        description:
+            "As a marketing associate, you will help grow CodeBox's presence on campus — running social media, planning events, and spreading the word about our projects and showcases.",
+    },
+];
+
+export const faqs: Faq[] = [
+    {
+        question: "What is CodeBox?",
+        answer: "CodeBox is a student-run software engineering club at Cal Poly SLO. Members work in teams to design, develop, and ship real web and mobile products over the course of the academic year.",
+    },
+    {
+        question: "How do I join Codebox?",
+        answer: "Fill out our quick interest form — no commitment required. We'll match you with a project team based on your skills and learning goals — no interviews required.",
+    },
+    {
+        question: "What kind of projects do you work on?",
+        answer: "Student-led web apps, mobile apps, and AI tools that solve real problems on campus — like Mustang Maps, Poly Problems, and Poly Pages.",
+    },
+    {
+        question: "Do I need programming experience to join?",
+        answer: "Nope! We welcome all skill levels, from complete beginners to experienced developers. You'll learn by building alongside teammates and mentors.",
+    },
+    {
+        question: "What technologies do you use?",
+        answer: "Teams choose their own stacks — commonly React, Next.js, React Native, Swift, Python, and cloud platforms like Supabase and Firebase.",
+    },
+    {
+        question: "How much time commitment is required?",
+        answer: "Expect a few hours per week: a weekly team meeting plus time working on your part of the project. It's flexible around your class schedule.",
+    },
+];
+
+export const steps: Step[] = [
+    {
+        number: "01",
+        title: "Show Interest",
+        description:
+            "Fill out our quick interest form, and tell us about your interests and experience level.",
+    },
+    {
+        number: "02",
+        title: "Get Matched",
+        description:
+            "We'll match you with a project team based on your skills and learning goals.",
+    },
+    {
+        number: "03",
+        title: "Build",
+        description:
+            "Work with your team to design, develop, and deploy your project over the academic year.",
+    },
+    {
+        number: "04",
+        title: "Showcase",
+        description: "Present your work at our end-of-year showcase!",
+    },
+];
+
+export const coreValues: CoreValue[] = [
+    {
+        title: "Innovation",
+        description:
+            "Create products that make a difference on campus and beyond.",
+        image: "/codebox-1.jpg",
+    },
+    {
+        title: "Community",
+        description:
+            "Build lasting friendships and professional connections with fellow Cal Poly students who share your passion.",
+        image: "/codebox-4.jpg",
+    },
+    {
+        title: "Mentorship & Learning",
+        description:
+            "Learn from experienced developers and grow your skills through hands-on collaboration and code reviews.",
+        image: "/codebox-5.jpg",
     },
 ];
 
 export const leadership: LeadershipMember[] = [
+    {
+        name: "Rishi Thakkar",
+        role: "Co-Founder & President",
+        linkedin: "https://www.linkedin.com/in/rishi-thakkar1/",
+        github: "#",
+    },
+    {
+        name: "Isaac Tsai",
+        role: "Vice President",
+        linkedin: "https://www.linkedin.com/in/isaac-m-tsai/",
+        github: "#",
+    },
+    {
+        name: "Scott Eisenberg",
+        role: "Head of Product",
+        linkedin: "https://www.linkedin.com/in/scott-eisenberg2/",
+        github: "#",
+    },
+    {
+        name: "Joshua Panicker",
+        role: "Director of External Engineering",
+        linkedin: "https://www.linkedin.com/in/joshua-panicker-32610a2b0/",
+        github: "#",
+    },
+    {
+        name: "Winnie Trinh",
+        role: "Director of External Engineering",
+        linkedin: "https://www.linkedin.com/in/winnie-trinh/",
+        github: "#",
+    },
+    {
+        name: "Evan Taylor",
+        role: "Director of Internal Engineering",
+        linkedin: "https://www.linkedin.com/in/evan-l-taylor/",
+        github: "#",
+    },
+    {
+        name: "Stella Daoud",
+        role: "Director of Operations",
+        linkedin: "https://www.linkedin.com/in/stelladaoud/",
+        github: "#",
+    },
+    {
+        name: "Emma Walker",
+        role: "Director of Design",
+        linkedin: "https://www.linkedin.com/in/emma-walker-040705320/",
+        github: "#",
+    },
+    {
+        name: "Drew Tompkins",
+        role: "Director of Marketing",
+        linkedin: "https://www.linkedin.com/in/drew-tompkins-a963873ba/",
+        github: "#",
+    },
+    {
+        name: "Dakshesh Pasala",
+        role: "Advisor",
+        linkedin: "https://www.linkedin.com/in/daksheshpasala/",
+        github: "#",
+    },
+    {
+        name: "Parker Jones",
+        role: "Advisor",
+        linkedin: "https://www.linkedin.com/in/parker-jones-ai/",
+        github: "#",
+    },
+];
+
+export const leadership2025: LeadershipMember[] = [
     {
         name: "Muzart Tuman",
         role: "Founder & President",
@@ -100,7 +314,7 @@ export const leadership: LeadershipMember[] = [
         github: "#",
     },
     {
-        name: "Hannah Moshtagi",
+        name: "Hannah Moshtaghi",
         role: "Co-Founder",
         linkedin: "https://www.linkedin.com/in/hannah-moshtaghi/",
         github: "#",
@@ -171,14 +385,14 @@ export const techLeads: TeamMember[] = [
 export const members: TeamMember[] = [
     { name: "Srinithi Doddapaneni", role: "Developer" },
     { name: "Trace Macias", role: "Developer" },
-    { name: "Liu Jacky", role: "Developer" },
+    { name: "Jacky Liu", role: "Developer" },
     { name: "Atharv Allepally", role: "Developer" },
     { name: "Vishal Murali Kannan", role: "Developer" },
     { name: "Jake Orchanian", role: "Developer" },
-    { name: "Drew", role: "Developer" },
+    { name: "Drew Tompkins", role: "Developer" },
     { name: "Snehil Kakani", role: "Developer" },
-    { name: "Rodney", role: "Developer" },
-    { name: "Osbaldo", role: "Developer" },
+    { name: "Rodney Fujiyama", role: "Developer" },
+    { name: "Osbaldo Orozco", role: "Developer" },
     { name: "Jacob Lee", role: "Developer" },
     { name: "Scout Knight-Pheng", role: "Developer" },
     { name: "Daniel Erazo", role: "Developer" },
@@ -187,13 +401,13 @@ export const members: TeamMember[] = [
     { name: "Emma Walker", role: "Developer" },
     { name: "Moe Aung", role: "Developer" },
     { name: "Noah Gullo", role: "Developer" },
-    { name: "Wieland", role: "Developer" },
-    { name: "Stella", role: "Developer" },
+    { name: "Wieland Rodriguez", role: "Developer" },
+    { name: "Stella Daoud", role: "Developer" },
     { name: "Arin Johar", role: "Developer" },
     { name: "Chloe Low", role: "Developer" },
     { name: "Emi Okumoto", role: "Developer" },
     { name: "Scott Eisenberg", role: "Developer" },
-    { name: "Deekshi", role: "Developer" },
+    { name: "Deekshitha Gangi", role: "Developer" },
     { name: "Matthew Phan", role: "Developer" },
     { name: "Taye Staats", role: "Developer" },
     { name: "Cole Hackman", role: "Developer" },
@@ -212,14 +426,20 @@ export const productManagers: TeamMember[] = [
 ];
 
 export const designers: TeamMember[] = [
-    { name: "Hannah Moshtagi", role: "Designers" },
+    { name: "Hannah Moshtaghi", role: "Designers" },
     { name: "Stella Kwon", role: "Designers" },
     { name: "Isaiah Cortez ", role: "Designers" },
     { name: "Isaac Tsai", role: "Designers" },
     { name: "Chanelle Friend", role: "Designers" },
 ];
 
-const leadershipNames = leadership
+const leadership2026Names = leadership
+    .filter((leader) => leader.role !== "Advisor")
+    .map((leader) => leader.name);
+
+const advisor2026Names = ["Aaron Keen", "Dakshesh Pasala", "Parker Jones"];
+
+const leadership2025Names = leadership2025
     .filter((leader) => !leader.role.toLowerCase().includes("tech lead"))
     .map((leader) => leader.name);
 
@@ -235,9 +455,20 @@ const advisorNames = ["Aaron Keen"];
 
 export const teamYears: TeamYear[] = [
     {
-        year: "2025-2026",
+        year: "2026 - 2027",
         sections: {
-            leadership: leadershipNames,
+            leadership: leadership2026Names,
+            techLeads: [],
+            productLeads: [],
+            developers: [],
+            designers: [],
+            advisors: advisor2026Names,
+        },
+    },
+    {
+        year: "2025 - 2026",
+        sections: {
+            leadership: leadership2025Names,
             techLeads: techLeadNames,
             productLeads: leadNames,
             developers: developerNames,

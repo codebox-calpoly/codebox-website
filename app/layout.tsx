@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Gabarito } from "next/font/google";
 
 import "./globals.css";
 
@@ -8,14 +8,10 @@ import { Navbar } from "../components/Navbar";
 
 import { ReactLenis } from "@/app/utils/lenis";
 
-const geistSans = Geist({
-    variable: "--font-geist-sans",
+const gabarito = Gabarito({
+    variable: "--font-gabarito",
     subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-    variable: "--font-geist-mono",
-    subsets: ["latin"],
+    weight: ["400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
@@ -29,8 +25,8 @@ export const metadata: Metadata = {
         type: "website",
     },
     icons: {
-        icon: "/favicon.png", // Add favicon
-        apple: "/apple-icon.png", // Add Apple touch icon
+        icon: "/favicon.png",
+        apple: "/apple-icon.png",
     },
 };
 
@@ -42,8 +38,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <ReactLenis root>
-                <body
-                    className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+                <body className={`${gabarito.variable} antialiased`}>
                     <div className="min-h-screen flex flex-col bg-background">
                         <Navbar />
                         <main className="flex-1">{children}</main>

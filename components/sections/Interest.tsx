@@ -2,8 +2,12 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { CheckCircle2, Loader2, Upload } from "lucide-react";
+import { CheckCircle2, ChevronDown, Loader2, Upload } from "lucide-react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDiscord } from "@fortawesome/free-brands-svg-icons";
 import { AnimatedSection } from "../ui/AnimatedSection";
+
+const DISCORD_INVITE_URL = "https://discord.gg/Hbj66Rcca";
 
 const MAX_RESUME_BYTES = 4 * 1024 * 1024;
 
@@ -40,11 +44,47 @@ const HEARD_ABOUT_OPTIONS = [
 ];
 
 const inputClasses =
-  "w-full rounded-xl bg-input-background border border-border px-4 py-3 text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-ring transition-shadow";
+  "w-full rounded-xl bg-black/40 border border-white/10 px-4 py-3.5 text-foreground placeholder:text-white/35 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/25 transition";
 
-const labelClasses = "block text-foreground text-sm font-medium mb-2";
+const labelClasses = "block text-foreground font-medium mb-2.5";
 
 type Status = "idle" | "submitting" | "success" | "error";
+
+function SelectField({
+  id,
+  name,
+  required,
+  placeholder,
+  options,
+}: {
+  id: string;
+  name: string;
+  required?: boolean;
+  placeholder: string;
+  options: string[];
+}) {
+  return (
+    <div className="relative">
+      <select
+        id={id}
+        name={name}
+        required={required}
+        defaultValue=""
+        className={`${inputClasses} appearance-none pr-10 [&:invalid]:text-white/35`}
+      >
+        <option value="" disabled>
+          {placeholder}
+        </option>
+        {options.map((option) => (
+          <option key={option} value={option} className="text-foreground">
+            {option}
+          </option>
+        ))}
+      </select>
+      <ChevronDown className="pointer-events-none absolute right-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-white/50" />
+    </div>
+  );
+}
 
 export function Interest() {
   const [status, setStatus] = useState<Status>("idle");
@@ -98,64 +138,86 @@ export function Interest() {
 
   if (status === "success") {
     return (
-      <div className="min-h-screen bg-background pt-16 flex items-center justify-center">
+      <div className="min-h-screen bg-background flex items-center justify-center">
         <motion.div
           className="max-w-xl mx-auto px-6 text-center py-24"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-6">
-            <CheckCircle2 className="w-8 h-8 text-accent-foreground" />
+          <div className="w-16 h-16 bg-gradient-to-br from-accent to-accent-dark rounded-full flex items-center justify-center mx-auto mb-6">
+            <CheckCircle2 className="w-8 h-8 text-white" />
           </div>
-          <h1 className="text-4xl text-foreground font-bold mb-4">
+          <h1 className="text-4xl sm:text-5xl text-foreground font-extrabold mb-4">
             You&apos;re all set!
           </h1>
-          <p className="text-foreground/60 text-lg leading-relaxed">
+          <p className="text-white/60 text-lg leading-relaxed">
             Thanks for your interest in CodeBox. We&apos;ve received your
-            application and will reach out soon with next steps.
+            info and will reach out soon with next steps.
           </p>
+          <p className="mt-6 text-white/60 text-lg leading-relaxed">
+            In the meantime, come hang out with us on Discord — that&apos;s
+            where everything happens!
+          </p>
+          <a
+            href={DISCORD_INVITE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-8 inline-flex items-center gap-3 rounded-full bg-accent px-8 py-3.5 text-lg font-bold text-white transition-all duration-300 hover:bg-[var(--codebox-green-hover)] hover:scale-[1.03]"
+          >
+            <FontAwesomeIcon icon={faDiscord} className="w-5 h-5" />
+            Join the Discord
+          </a>
         </motion.div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-background pt-16">
-      <section className="py-24 bg-background">
-        <div className="max-w-3xl mx-auto px-6 lg:px-8">
+    <div className="min-h-screen bg-background relative overflow-hidden">
+      <div
+        aria-hidden
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 80% 55% at 50% -10%, rgba(26,155,74,0.28), transparent 60%)",
+        }}
+      />
+
+      <section className="relative pt-40 pb-14">
+        <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
           <motion.h1
-            className="text-5xl lg:text-6xl text-foreground mb-6 font-bold"
+            className="text-5xl sm:text-6xl lg:text-7xl text-foreground font-extrabold"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Interest Form
+            Interested?
           </motion.h1>
           <motion.p
-            className="text-xl text-foreground/70 leading-relaxed"
+            className="mt-5 text-lg text-white/60"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.15 }}
           >
-            Tell us a bit about yourself and we&apos;ll be in touch about
-            joining CodeBox.
+            No commitment — just tell us a bit about yourself and we&apos;ll
+            be in touch about joining CodeBox.
           </motion.p>
         </div>
       </section>
 
-      <section className="pb-24 bg-background">
+      <section className="relative pb-24">
         <div className="max-w-3xl mx-auto px-6 lg:px-8">
           <AnimatedSection>
             <form
               onSubmit={handleSubmit}
-              className="space-y-8 bg-foreground/5 border border-foreground/10 rounded-3xl p-8 lg:p-10"
+              className="space-y-8 bg-card border border-white/10 rounded-3xl p-7 sm:p-10 lg:p-12"
             >
               {/* Contact info */}
               <div className="grid sm:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="fullName" className={labelClasses}>
-                    Full Name *
+                    Full Name <span className="text-accent">*</span>
                   </label>
                   <input
                     id="fullName"
@@ -168,7 +230,7 @@ export function Interest() {
                 </div>
                 <div>
                   <label htmlFor="email" className={labelClasses}>
-                    Email *
+                    Email <span className="text-accent">*</span>
                   </label>
                   <input
                     id="email"
@@ -212,28 +274,19 @@ export function Interest() {
               <div className="grid sm:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="yearInSchool" className={labelClasses}>
-                    Year in School *
+                    Year in School <span className="text-accent">*</span>
                   </label>
-                  <select
+                  <SelectField
                     id="yearInSchool"
                     name="yearInSchool"
                     required
-                    defaultValue=""
-                    className={inputClasses}
-                  >
-                    <option value="" disabled>
-                      Select your year
-                    </option>
-                    {YEAR_OPTIONS.map((year) => (
-                      <option key={year} value={year}>
-                        {year}
-                      </option>
-                    ))}
-                  </select>
+                    placeholder="Select your year"
+                    options={YEAR_OPTIONS}
+                  />
                 </div>
                 <div>
                   <label htmlFor="major" className={labelClasses}>
-                    Major *
+                    Major <span className="text-accent">*</span>
                   </label>
                   <input
                     id="major"
@@ -250,21 +303,12 @@ export function Interest() {
                 <label htmlFor="experienceLevel" className={labelClasses}>
                   Programming Experience
                 </label>
-                <select
+                <SelectField
                   id="experienceLevel"
                   name="experienceLevel"
-                  defaultValue=""
-                  className={inputClasses}
-                >
-                  <option value="" disabled>
-                    Select your experience level
-                  </option>
-                  {EXPERIENCE_OPTIONS.map((level) => (
-                    <option key={level} value={level}>
-                      {level}
-                    </option>
-                  ))}
-                </select>
+                  placeholder="Select your experience level"
+                  options={EXPERIENCE_OPTIONS}
+                />
               </div>
 
               {/* Interest areas */}
@@ -274,17 +318,15 @@ export function Interest() {
                   {INTEREST_AREAS.map((area) => (
                     <label
                       key={area}
-                      className="flex items-center gap-3 rounded-xl bg-input-background border border-border px-4 py-3 cursor-pointer hover:border-foreground/30 transition-colors"
+                      className="flex items-center gap-3 rounded-xl bg-black/40 border border-white/10 px-4 py-3.5 cursor-pointer transition-colors hover:border-white/30 has-[:checked]:border-accent has-[:checked]:bg-accent/10"
                     >
                       <input
                         type="checkbox"
                         name="interestAreas"
                         value={area}
-                        className="w-4 h-4 accent-accent"
+                        className="w-4 h-4 accent-[#1a9b4a] shrink-0"
                       />
-                      <span className="text-foreground/80 text-sm">
-                        {area}
-                      </span>
+                      <span className="text-white/80 text-sm">{area}</span>
                     </label>
                   ))}
                 </div>
@@ -293,14 +335,15 @@ export function Interest() {
               {/* Why interested */}
               <div>
                 <label htmlFor="whyInterested" className={labelClasses}>
-                  Why do you want to join CodeBox? *
+                  Why do you want to join CodeBox?{" "}
+                  <span className="text-accent">*</span>
                 </label>
                 <textarea
                   id="whyInterested"
                   name="whyInterested"
                   required
                   rows={4}
-                  className={inputClasses}
+                  className={`${inputClasses} resize-y`}
                   placeholder="Tell us what draws you to the club and what you're hoping to get out of it..."
                 />
               </div>
@@ -308,15 +351,29 @@ export function Interest() {
               {/* Resume upload */}
               <div>
                 <label htmlFor="resume" className={labelClasses}>
-                  Resume (optional)
+                  Resume{" "}
+                  <span className="text-white/40 font-normal">(optional)</span>
                 </label>
                 <label
                   htmlFor="resume"
-                  className="flex items-center gap-3 rounded-xl bg-input-background border border-dashed border-border px-4 py-4 cursor-pointer hover:border-foreground/30 transition-colors"
+                  className={`flex items-center gap-3 rounded-xl bg-black/40 border border-dashed px-4 py-4 cursor-pointer transition-colors ${
+                    resumeFileName
+                      ? "border-accent/60"
+                      : "border-white/15 hover:border-accent/50"
+                  }`}
                 >
-                  <Upload className="w-5 h-5 text-foreground/50 shrink-0" />
-                  <span className="text-foreground/60 text-sm truncate">
-                    {resumeFileName || "PDF, DOC, or DOCX (max 4 MB) — click to upload"}
+                  <Upload
+                    className={`w-5 h-5 shrink-0 ${
+                      resumeFileName ? "text-accent" : "text-white/50"
+                    }`}
+                  />
+                  <span
+                    className={`text-sm truncate ${
+                      resumeFileName ? "text-accent" : "text-white/50"
+                    }`}
+                  >
+                    {resumeFileName ||
+                      "PDF, DOC, or DOCX (max 4 MB) — click to upload"}
                   </span>
                 </label>
                 <input
@@ -334,21 +391,12 @@ export function Interest() {
                 <label htmlFor="heardAbout" className={labelClasses}>
                   How did you hear about CodeBox?
                 </label>
-                <select
+                <SelectField
                   id="heardAbout"
                   name="heardAbout"
-                  defaultValue=""
-                  className={inputClasses}
-                >
-                  <option value="" disabled>
-                    Select an option
-                  </option>
-                  {HEARD_ABOUT_OPTIONS.map((option) => (
-                    <option key={option} value={option}>
-                      {option}
-                    </option>
-                  ))}
-                </select>
+                  placeholder="Select an option"
+                  options={HEARD_ABOUT_OPTIONS}
+                />
               </div>
 
               {/* Questions */}
@@ -360,7 +408,7 @@ export function Interest() {
                   id="questions"
                   name="questions"
                   rows={3}
-                  className={inputClasses}
+                  className={`${inputClasses} resize-y`}
                   placeholder="Anything else you'd like us to know?"
                 />
               </div>
@@ -372,14 +420,14 @@ export function Interest() {
               <button
                 type="submit"
                 disabled={status === "submitting"}
-                className="w-full flex items-center justify-center gap-2 rounded-full bg-accent hover:bg-[#16a057] text-accent-foreground font-semibold py-4 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+                className="w-full flex items-center justify-center gap-2 rounded-full bg-accent hover:bg-[var(--codebox-green-hover)] text-white font-bold tracking-wide uppercase py-4 transition-all duration-300 hover:scale-[1.01] disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
               >
                 {status === "submitting" && (
                   <Loader2 className="w-4 h-4 animate-spin" />
                 )}
                 {status === "submitting"
                   ? "Submitting..."
-                  : "Submit Application"}
+                  : "Submit Interest Form"}
               </button>
             </form>
           </AnimatedSection>

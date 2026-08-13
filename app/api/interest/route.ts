@@ -142,7 +142,7 @@ export async function POST(request: Request) {
       await supabase.storage.from(RESUME_BUCKET).remove([resumePath]);
     }
     return NextResponse.json(
-      { error: "We could not save your application. Please try again." },
+      { error: "We could not save your submission. Please try again." },
       { status: 502 },
     );
   }
