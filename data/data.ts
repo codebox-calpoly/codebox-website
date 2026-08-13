@@ -36,6 +36,19 @@ export type CoreValue = {
     image: string;
 };
 
+export const eventTags = ["Week of CodeBox", "Food Provided"] as const;
+
+export type EventTag = (typeof eventTags)[number];
+
+export type ClubEvent = {
+    /** ISO date, e.g. "2026-08-20" */
+    date: string;
+    name: string;
+    time: string;
+    presenters?: string[];
+    tags?: EventTag[];
+};
+
 export type LeadershipMember = {
     name: string;
     role: string;
@@ -213,6 +226,67 @@ export const steps: Step[] = [
         number: "04",
         title: "Showcase",
         description: "Present your work at our end-of-year showcase!",
+    },
+];
+
+export const events: ClubEvent[] = [
+    {
+        date: "2026-08-20",
+        name: "CSSE Club Chat",
+        time: "3:30 PM – 5:00 PM",
+        presenters: ["Rishi", "Isaac"],
+    },
+    {
+        date: "2026-08-23",
+        name: "CodeBox @ WOW Club Fair",
+        time: "10:00 AM",
+    },
+    {
+        date: "2026-08-28",
+        name: "CodeBox Interest Meeting #1",
+        time: "6:00 PM",
+    },
+    {
+        date: "2026-08-31",
+        name: "2025 Project Review",
+        time: "6:00 PM",
+        tags: ["Week of CodeBox"],
+    },
+    {
+        date: "2026-09-01",
+        name: "Speed Dating Social with CIE",
+        time: "6:00 PM",
+        tags: ["Week of CodeBox", "Food Provided"],
+    },
+    {
+        date: "2026-09-02",
+        name: "LinkedIn Roast",
+        time: "6:00 PM",
+        tags: ["Week of CodeBox"],
+    },
+    {
+        date: "2026-09-03",
+        name: "CodeBox Trivia Night",
+        time: "6:00 PM",
+        tags: ["Week of CodeBox"],
+    },
+    {
+        date: "2026-09-04",
+        name: "Panda Express Trip",
+        time: "6:00 PM",
+        tags: ["Week of CodeBox"],
+    },
+    {
+        date: "2026-09-05",
+        name: "CodeBoxHacks Day 1",
+        time: "8:00 AM – 5:00 PM",
+        tags: ["Week of CodeBox"],
+    },
+    {
+        date: "2026-09-06",
+        name: "CodeBoxHacks Day 2",
+        time: "8:00 AM – 5:00 PM",
+        tags: ["Week of CodeBox"],
     },
 ];
 
