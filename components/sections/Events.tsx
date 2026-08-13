@@ -40,35 +40,41 @@ function EventRow({ event, index }: { event: ClubEvent; index: number }) {
 
     return (
         <AnimatedSection delay={Math.min(index * 0.05, 0.2)}>
-            <div className="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-6 md:gap-12 items-end">
-                <div className="w-32">
-                    <div className="text-[7rem] leading-none font-extrabold bg-gradient-to-b from-accent to-accent-dark bg-clip-text text-transparent select-none">
+            <div className="grid grid-cols-[auto_1fr] gap-5 md:gap-12 items-start md:items-end">
+                <div className="w-14 md:w-32 text-center md:text-left">
+                    <div className="text-4xl md:text-[7rem] leading-none font-extrabold bg-gradient-to-b from-accent to-accent-dark bg-clip-text text-transparent select-none">
                         {date.getDate()}
                     </div>
-                    <div className="mt-2 text-2xl font-extrabold tracking-wide uppercase">
-                        {MONTHS[date.getMonth()]} {date.getFullYear()}
+                    <div className="mt-1 md:mt-2 text-sm md:text-2xl font-extrabold tracking-wide uppercase">
+                        {MONTHS[date.getMonth()]}
+                        <span className="hidden md:inline">
+                            {" "}
+                            {date.getFullYear()}
+                        </span>
                     </div>
                 </div>
-                <div className="border-b border-white/40 pb-4 md:text-right">
+                <div className="min-w-0 border-b border-white/25 md:border-white/40 pb-5 md:pb-4 md:text-right">
                     {event.tags && event.tags.length > 0 && (
-                        <div className="mb-3 flex flex-wrap gap-2 md:justify-end">
+                        <div className="mb-2.5 md:mb-3 flex flex-wrap gap-2 md:justify-end">
                             {event.tags.map((tag) => (
                                 <span
                                     key={tag}
-                                    className="rounded-full border border-accent/60 bg-accent/10 px-3 py-1 text-xs font-bold uppercase tracking-wide text-accent">
+                                    className="rounded-full border border-accent/60 bg-accent/10 px-2.5 py-0.5 md:px-3 md:py-1 text-[11px] md:text-xs font-bold uppercase tracking-wide text-accent">
                                     {tag}
                                 </span>
                             ))}
                         </div>
                     )}
-                    <h3 className="text-2xl font-extrabold">{event.name}</h3>
+                    <h3 className="text-xl md:text-2xl font-extrabold">
+                        {event.name}
+                    </h3>
                     {event.presenters && event.presenters.length > 0 && (
-                        <p className="mt-2 flex items-center gap-2 text-white/70 md:justify-end">
+                        <p className="mt-2 flex items-center gap-2 text-sm md:text-base text-white/70 md:justify-end">
                             <Users className="w-4 h-4 shrink-0" />
                             Presented by {formatPresenters(event.presenters)}
                         </p>
                     )}
-                    <p className="mt-2 flex items-center gap-2 text-accent font-medium md:justify-end">
+                    <p className="mt-2 flex items-center gap-2 text-sm md:text-base text-accent font-medium md:justify-end">
                         <Clock className="w-4 h-4 shrink-0" />
                         {event.time}
                     </p>
@@ -108,7 +114,7 @@ export function Events() {
                         </h2>
                     </AnimatedSection>
 
-                    <div className="mt-16 flex flex-col gap-20">
+                    <div className="mt-12 md:mt-16 flex flex-col gap-10 md:gap-20">
                         {upcoming.length > 0 ? (
                             upcoming.map((event, i) => (
                                 <EventRow
@@ -152,7 +158,7 @@ export function Events() {
                                     Past Events
                                 </h2>
                             </AnimatedSection>
-                            <div className="mt-16 flex flex-col gap-20 opacity-50">
+                            <div className="mt-12 md:mt-16 flex flex-col gap-10 md:gap-20 opacity-50">
                                 {past.map((event, i) => (
                                     <EventRow
                                         key={`${event.date}-${event.name}`}

@@ -42,7 +42,7 @@ function Hero() {
                 style={{ background: "#000000" }}
             />
             <div className="absolute inset-x-0 bottom-14 z-10 flex flex-col items-center gap-7 pointer-events-none">
-                <p className="text-lg text-white/70">Welcome to Codebox</p>
+                <p className="text-lg text-white/70">Welcome to CodeBox</p>
                 <PillButton
                     href="#what-is-codebox"
                     className="pointer-events-auto bg-black/40 backdrop-blur-sm">

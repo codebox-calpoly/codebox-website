@@ -182,7 +182,7 @@ export const faqs: Faq[] = [
         answer: "CodeBox is a student-run software engineering club at Cal Poly SLO. Members work in teams to design, develop, and ship real web and mobile products over the course of the academic year.",
     },
     {
-        question: "How do I join Codebox?",
+        question: "How do I join CodeBox?",
         answer: "Fill out our quick interest form — no commitment required. We'll match you with a project team based on your skills and learning goals — no interviews required.",
     },
     {
