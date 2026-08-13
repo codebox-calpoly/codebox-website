@@ -18,6 +18,7 @@ import {
 
 import { CodeboxHero } from "../CodeboxHero";
 import { AnimatedSection } from "../ui/AnimatedSection";
+import { CountUp } from "../ui/CountUp";
 import { PillButton } from "../ui/PillButton";
 import { CTA } from "../CTA";
 import { projects, services, roles, faqs } from "@/data/data";
@@ -45,7 +46,7 @@ function Hero() {
                 <p className="text-lg text-white/70">Welcome to CodeBox</p>
                 <PillButton
                     href="#what-is-codebox"
-                    className="pointer-events-auto bg-black/40 backdrop-blur-sm">
+                    className="pointer-events-auto rounded-full bg-black/40 backdrop-blur-sm">
                     Learn More
                 </PillButton>
             </div>
@@ -98,7 +99,7 @@ function WhatIsCodeBox() {
                         className="flex lg:flex-col gap-12 lg:gap-10 lg:text-right">
                         <div>
                             <div className="text-5xl sm:text-6xl font-extrabold">
-                                5+
+                                <CountUp value={5} suffix="+" />
                             </div>
                             <div className="mt-1 text-sm tracking-widest uppercase text-white/70">
                                 Projects
@@ -108,7 +109,7 @@ function WhatIsCodeBox() {
                         </div>
                         <div>
                             <div className="text-5xl sm:text-6xl font-extrabold">
-                                50+
+                                <CountUp value={50} suffix="+" />
                             </div>
                             <div className="mt-1 text-sm tracking-widest uppercase text-white/70">
                                 Members &<br />
@@ -329,7 +330,7 @@ function Faqs() {
                         return (
                             <div
                                 key={faq.question}
-                                className="border-b border-[#353a54]">
+                                className="border-b border-white/15">
                                 <button
                                     onClick={() =>
                                         setOpenIndex(open ? null : i)

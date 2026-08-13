@@ -152,7 +152,7 @@ function Classes() {
                         return (
                             <div
                                 key={year.year}
-                                className="border-b border-[#353a54]">
+                                className="border-b border-white/15">
                                 <button
                                     onClick={() =>
                                         setOpenYear(open ? null : year.year)

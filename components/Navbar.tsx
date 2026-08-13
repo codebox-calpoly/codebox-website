@@ -7,6 +7,8 @@ import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
+import { SlideInButton } from "./ui/SlideInButton";
+
 const navItems = [
     { label: "About", href: "/about" },
     { label: "Projects", href: "/projects" },
@@ -56,11 +58,20 @@ export function Navbar() {
                     </div>
 
                     <div className="hidden md:block">
-                        <Link
-                            href="/interest"
-                            className="inline-flex items-center rounded-full bg-accent px-6 py-2.5 text-sm font-bold tracking-wide text-white uppercase transition-all duration-300 hover:bg-[var(--codebox-green-hover)] hover:scale-[1.03]">
-                            I&rsquo;m Interested
-                        </Link>
+                        <SlideInButton
+                            link="/interest"
+                            variant="small"
+                            buttonText={
+                                <span className="uppercase tracking-wide font-bold">
+                                    I&rsquo;m Interested
+                                </span>
+                            }
+                            defaultBackgroundColor="#1a9b4a"
+                            hoverBackgroundColor="#005e2f"
+                            defaultTextColor="#ffffff"
+                            hoverTextColor="#ffffff"
+                            iconName="Rocket"
+                        />
                     </div>
 
                     <button
@@ -97,12 +108,22 @@ export function Navbar() {
                                         {item.label}
                                     </Link>
                                 ))}
-                                <Link
-                                    href="/interest"
+                                <SlideInButton
+                                    link="/interest"
+                                    variant="small"
+                                    buttonText={
+                                        <span className="uppercase tracking-wide font-bold">
+                                            I&rsquo;m Interested
+                                        </span>
+                                    }
+                                    defaultBackgroundColor="#1a9b4a"
+                                    hoverBackgroundColor="#005e2f"
+                                    defaultTextColor="#ffffff"
+                                    hoverTextColor="#ffffff"
+                                    iconName="Rocket"
                                     onClick={() => setMobileMenuOpen(false)}
-                                    className="mt-2 mb-2 inline-flex w-fit items-center rounded-full bg-accent px-6 py-2.5 text-sm font-bold tracking-wide text-white uppercase">
-                                    I&rsquo;m Interested
-                                </Link>
+                                    className="mt-2 mb-2 w-fit"
+                                />
                             </div>
                         </motion.div>
                     )}

@@ -4,29 +4,21 @@ import Image from "next/image";
 import { Code, Users, GraduationCap, type LucideIcon } from "lucide-react";
 
 import { AnimatedSection } from "../ui/AnimatedSection";
+import { CountUp } from "../ui/CountUp";
 import { CTA } from "../CTA";
 import { coreValues } from "@/data/data";
 
 const valueIcons: LucideIcon[] = [Code, Users, GraduationCap];
 
 const stats = [
-    { value: "5+", label: ["Projects", "Completed"] },
-    { value: "50+", label: ["Members &", "Growing"] },
-    { value: "1", label: ["Years", "Building"] },
+    { value: 5, suffix: "+", label: ["Projects", "Completed"] },
+    { value: 50, suffix: "+", label: ["Members &", "Growing"] },
+    { value: 1, suffix: "", label: ["Years", "Building"] },
 ];
 
 function AboutHero() {
     return (
-        <section className="relative overflow-hidden pb-24">
-            <div
-                aria-hidden
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                    background:
-                        "radial-gradient(ellipse 80% 60% at 50% -10%, rgba(26,155,74,0.35), transparent 60%), radial-gradient(ellipse 60% 50% at 10% 40%, rgba(0,94,47,0.3), transparent 65%), radial-gradient(ellipse 50% 40% at 90% 30%, rgba(26,155,74,0.12), transparent 60%)",
-                }}
-            />
-
+        <section className="relative pb-24">
             <div className="relative max-w-6xl mx-auto px-6 lg:px-8 pt-40">
                 <AnimatedSection className="text-center">
                     <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold">
@@ -79,9 +71,12 @@ function Stats() {
             <div className="max-w-5xl mx-auto px-6 lg:px-8">
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 text-center">
                     {stats.map((stat, i) => (
-                        <AnimatedSection key={stat.value} delay={i * 0.1}>
+                        <AnimatedSection key={stat.label[0]} delay={i * 0.1}>
                             <div className="text-6xl font-extrabold">
-                                {stat.value}
+                                <CountUp
+                                    value={stat.value}
+                                    suffix={stat.suffix}
+                                />
                             </div>
                             <div className="mt-2 text-sm tracking-widest uppercase text-white/70">
                                 {stat.label[0]}

@@ -174,16 +174,7 @@ export function Interest() {
   }
 
   return (
-    <div className="min-h-screen bg-background relative overflow-hidden">
-      <div
-        aria-hidden
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse 80% 55% at 50% -10%, rgba(26,155,74,0.28), transparent 60%)",
-        }}
-      />
-
+    <div className="min-h-screen bg-background relative">
       <section className="relative pt-40 pb-14">
         <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
           <motion.h1
