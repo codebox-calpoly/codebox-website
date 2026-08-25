@@ -6,6 +6,7 @@ export const metadata: Metadata = {
     title: "About",
     description:
         "Meet CodeBox — Cal Poly's student-run software engineering club, turning student ideas into real products every year.",
+    alternates: { canonical: "/about" },
 };
 
 export default function Page() {

@@ -6,6 +6,7 @@ export const metadata: Metadata = {
     title: "Join",
     description:
         "Join CodeBox — explore our team positions and how to get involved.",
+    alternates: { canonical: "/join" },
 };
 
 export default function Page() {
