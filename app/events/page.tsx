@@ -49,7 +49,9 @@ const eventsJsonLd = {
                 eventStatus: "https://schema.org/EventScheduled",
                 location: {
                     "@type": "Place",
-                    name: "California Polytechnic State University",
+                    name: event.location
+                        ? `${event.location}, Cal Poly`
+                        : "California Polytechnic State University",
                     address: {
                         "@type": "PostalAddress",
                         addressLocality: "San Luis Obispo",

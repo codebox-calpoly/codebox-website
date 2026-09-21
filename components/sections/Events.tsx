@@ -1,6 +1,6 @@
 "use client";
 
-import { Clock, Users } from "lucide-react";
+import { Clock, MapPin, Users } from "lucide-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDiscord } from "@fortawesome/free-brands-svg-icons";
 
@@ -79,6 +79,12 @@ function EventRow({ event, index }: { event: ClubEvent; index: number }) {
                         <Clock className="w-4 h-4 shrink-0" />
                         {event.time}
                     </p>
+                    {event.location && (
+                        <p className="mt-2 flex items-center gap-2 text-sm md:text-base text-white/70 md:justify-end">
+                            <MapPin className="w-4 h-4 shrink-0" />
+                            {event.location}
+                        </p>
+                    )}
                     {event.link && (
                         <div className="mt-4 flex md:justify-end">
                             <PillButton
@@ -146,10 +152,6 @@ export function Events() {
                     </div>
 
                     <AnimatedSection delay={0.1} className="mt-24 text-center">
-                        <p className="text-lg text-white/60">
-                            Wondering where these are happening? Locations are
-                            shared in our Discord!
-                        </p>
                         <a
                             href={DISCORD_INVITE_URL}
                             target="_blank"

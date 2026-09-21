@@ -49,6 +49,8 @@ export type ClubEvent = {
     tags?: EventTag[];
     /** External registration/RSVP page, e.g. a Luma link */
     link?: string;
+    /** On-campus location, e.g. "UU Plaza" or "181-0102" */
+    location?: string;
 };
 
 export type LeadershipMember = {
@@ -297,6 +299,13 @@ export const events: ClubEvent[] = [
         presenters: ["Raquel Smith"],
         tags: ["Food Provided"],
         link: "https://luma.com/s8nqa9e3",
+        location: "UU Plaza",
+    },
+    {
+        date: "2026-09-24",
+        name: "SpaceX x CodeBox (Recruiter & Engineer Mixer)",
+        time: "4:00 PM – 5:00 PM",
+        location: "181-0102",
     },
 ];
 
