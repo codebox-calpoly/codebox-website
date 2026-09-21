@@ -47,6 +47,8 @@ export type ClubEvent = {
     time: string;
     presenters?: string[];
     tags?: EventTag[];
+    /** External registration/RSVP page, e.g. a Luma link */
+    link?: string;
 };
 
 export type LeadershipMember = {
@@ -287,6 +289,14 @@ export const events: ClubEvent[] = [
         name: "CodeBoxHacks Day 2",
         time: "8:00 AM – 5:00 PM",
         tags: ["Week of CodeBox"],
+    },
+    {
+        date: "2026-09-22",
+        name: "PostHog x CodeBox",
+        time: "5:00 PM – 7:00 PM",
+        presenters: ["Raquel Smith"],
+        tags: ["Food Provided"],
+        link: "https://luma.com/s8nqa9e3",
     },
 ];
 

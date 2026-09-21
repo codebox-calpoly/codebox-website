@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDiscord } from "@fortawesome/free-brands-svg-icons";
 
 import { AnimatedSection } from "../ui/AnimatedSection";
+import { PillButton } from "../ui/PillButton";
 import { CTA } from "../CTA";
 import { events, type ClubEvent } from "@/data/data";
 
@@ -78,6 +79,17 @@ function EventRow({ event, index }: { event: ClubEvent; index: number }) {
                         <Clock className="w-4 h-4 shrink-0" />
                         {event.time}
                     </p>
+                    {event.link && (
+                        <div className="mt-4 flex md:justify-end">
+                            <PillButton
+                                href={event.link}
+                                variant="primary"
+                                size="sm"
+                                newTab>
+                                RSVP
+                            </PillButton>
+                        </div>
+                    )}
                 </div>
             </div>
         </AnimatedSection>

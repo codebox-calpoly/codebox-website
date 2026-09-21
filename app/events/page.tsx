@@ -37,6 +37,7 @@ const eventsJsonLd = {
             item: {
                 "@type": "Event",
                 name: event.name,
+                ...(event.link && { url: event.link }),
                 startDate: startTime
                     ? `${event.date}T${startTime}${TZ_OFFSET}`
                     : event.date,
