@@ -36,7 +36,11 @@ export type CoreValue = {
     image: string;
 };
 
-export const eventTags = ["Week of CodeBox", "Food Provided"] as const;
+export const eventTags = [
+    "Week of CodeBox",
+    "Food Provided",
+    "Members Only",
+] as const;
 
 export type EventTag = (typeof eventTags)[number];
 
@@ -306,6 +310,7 @@ export const events: ClubEvent[] = [
         name: "SpaceX x CodeBox (Recruiter & Engineer Mixer)",
         time: "4:00 PM – 5:00 PM",
         location: "180-0101",
+        tags: ["Members Only"],
     },
 ];
 
