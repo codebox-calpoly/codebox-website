@@ -311,6 +311,7 @@ export const events: ClubEvent[] = [
         time: "4:00 PM – 5:00 PM",
         location: "180-0101",
         tags: ["Members Only"],
+        link: "https://forms.gle/tgYSMhyvoptnqqNn9",
     },
 ];
 
