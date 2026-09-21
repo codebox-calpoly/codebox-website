@@ -305,7 +305,7 @@ export const events: ClubEvent[] = [
         date: "2026-09-24",
         name: "SpaceX x CodeBox (Recruiter & Engineer Mixer)",
         time: "4:00 PM – 5:00 PM",
-        location: "181-0102",
+        location: "180-0101",
     },
 ];
 
