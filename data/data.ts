@@ -344,12 +344,6 @@ export const leadership: LeadershipMember[] = [
         github: "#",
     },
     {
-        name: "Isaac Tsai",
-        role: "Vice President",
-        linkedin: "https://www.linkedin.com/in/isaac-m-tsai/",
-        github: "#",
-    },
-    {
         name: "Scott Eisenberg",
         role: "Head of Product",
         linkedin: "https://www.linkedin.com/in/scott-eisenberg2/",
@@ -401,6 +395,12 @@ export const leadership: LeadershipMember[] = [
         name: "Parker Jones",
         role: "Advisor",
         linkedin: "https://www.linkedin.com/in/parker-jones-ai/",
+        github: "#",
+    },
+    {
+        name: "Isaac Tsai",
+        role: "Advisor",
+        linkedin: "https://www.linkedin.com/in/isaac-m-tsai/",
         github: "#",
     },
 ];
@@ -536,7 +536,12 @@ const leadership2026Names = leadership
     .filter((leader) => leader.role !== "Advisor")
     .map((leader) => leader.name);
 
-const advisor2026Names = ["Aaron Keen", "Dakshesh Pasala", "Parker Jones"];
+const advisor2026Names = [
+    "Aaron Keen",
+    "Dakshesh Pasala",
+    "Parker Jones",
+    "Isaac Tsai",
+];
 
 const leadership2025Names = leadership2025
     .filter((leader) => !leader.role.toLowerCase().includes("tech lead"))
