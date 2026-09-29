@@ -148,13 +148,13 @@ export function Bootcamp() {
 
               <div>
                 <label htmlFor="deployedUrl" className={labelClasses}>
-                  Deployed Project <span className="text-accent">*</span>
+                  Deployed Project{" "}
+                  <span className="text-white/40 font-normal">(optional)</span>
                 </label>
                 <input
                   id="deployedUrl"
                   name="deployedUrl"
                   type="url"
-                  required
                   className={inputClasses}
                   placeholder="https://my-project.vercel.app"
                 />

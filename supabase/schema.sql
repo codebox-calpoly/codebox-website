@@ -40,7 +40,7 @@ create table if not exists public.bootcamp_submissions (
     full_name text not null,
     email text not null,
     github_url text not null,
-    deployed_url text not null
+    deployed_url text
 );
 
 create index if not exists bootcamp_submissions_created_at_idx
@@ -48,3 +48,6 @@ create index if not exists bootcamp_submissions_created_at_idx
 
 -- Same setup as interest_submissions: RLS on, no policies, service role only.
 alter table public.bootcamp_submissions enable row level security;
+
+-- The deployed project link became optional after the table was first created.
+alter table public.bootcamp_submissions alter column deployed_url drop not null;

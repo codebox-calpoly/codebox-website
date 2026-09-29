@@ -3,12 +3,7 @@ import { getSupabaseAdmin } from "@/lib/supabase";
 
 export const runtime = "nodejs";
 
-const REQUIRED_FIELDS = [
-  "fullName",
-  "email",
-  "githubUrl",
-  "deployedUrl",
-] as const;
+const REQUIRED_FIELDS = ["fullName", "email", "githubUrl"] as const;
 
 function readText(formData: FormData, key: string): string {
   const value = formData.get(key);
@@ -52,7 +47,10 @@ export async function POST(request: Request) {
     return badRequest("Please enter a valid email address.");
   }
 
-  if (!isHttpUrl(fields.githubUrl) || !isHttpUrl(fields.deployedUrl)) {
+  if (
+    !isHttpUrl(fields.githubUrl) ||
+    (fields.deployedUrl && !isHttpUrl(fields.deployedUrl))
+  ) {
     return badRequest("Please enter valid links starting with https://.");
   }
 
@@ -73,7 +71,7 @@ export async function POST(request: Request) {
       full_name: fields.fullName,
       email: fields.email,
       github_url: fields.githubUrl,
-      deployed_url: fields.deployedUrl,
+      deployed_url: fields.deployedUrl || null,
     });
 
   if (insertError) {
