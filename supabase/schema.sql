@@ -1,5 +1,8 @@
--- Schema for the member interest form.
--- Run this once in the Supabase SQL editor (Dashboard > SQL Editor > New query).
+-- Original bootstrap schema for the member interest form.
+--
+-- Tables are now defined in lib/db/schema.ts and managed with drizzle-kit
+-- (see drizzle/). This file is kept for the storage bucket setup, which
+-- lives outside the public schema that Drizzle manages.
 
 create table if not exists public.interest_submissions (
     id uuid primary key default gen_random_uuid(),

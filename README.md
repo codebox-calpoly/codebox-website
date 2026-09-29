@@ -34,3 +34,19 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Database
+
+Form submissions are stored in Supabase Postgres and accessed through [Drizzle ORM](https://orm.drizzle.team). Resumes are uploaded to Supabase Storage.
+
+- `lib/db/schema.ts` — table definitions (source of truth)
+- `lib/db/index.ts` — server-only `getDb()` client
+- `drizzle/` — generated SQL migrations
+
+Copy `.env.example` to `.env.local` and set `DATABASE_URL` along with the Supabase keys, then:
+
+```bash
+npm run db:generate   # create a migration after editing lib/db/schema.ts
+npm run db:migrate    # apply pending migrations
+npm run db:studio     # browse data locally
+```

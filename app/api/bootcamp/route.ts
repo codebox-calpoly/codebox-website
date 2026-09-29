@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getSupabaseAdmin } from "@/lib/supabase";
+import { bootcampSubmissions, getDb, type Database } from "@/lib/db";
 
 export const runtime = "nodejs";
 
@@ -56,27 +56,25 @@ export async function POST(request: Request) {
     return badRequest("Please enter valid links starting with https://.");
   }
 
-  let supabase: ReturnType<typeof getSupabaseAdmin>;
+  let db: Database;
   try {
-    supabase = getSupabaseAdmin();
+    db = getDb();
   } catch (error) {
-    console.error("Supabase is not configured:", error);
+    console.error("Database is not configured:", error);
     return NextResponse.json(
       { error: "The form is not configured correctly. Please email us instead." },
       { status: 500 },
     );
   }
 
-  const { error: insertError } = await supabase
-    .from("bootcamp_submissions")
-    .insert({
-      full_name: fields.fullName,
+  try {
+    await db.insert(bootcampSubmissions).values({
+      fullName: fields.fullName,
       email: fields.email,
-      github_url: fields.githubUrl,
-      deployed_url: fields.deployedUrl,
+      githubUrl: fields.githubUrl,
+      deployedUrl: fields.deployedUrl,
     });
-
-  if (insertError) {
+  } catch (insertError) {
     console.error("Bootcamp submission insert failed:", insertError);
     return NextResponse.json(
       { error: "We could not save your submission. Please try again." },

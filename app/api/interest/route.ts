@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { getDb, interestSubmissions, type Database } from "@/lib/db";
 import { getSupabaseAdmin, RESUME_BUCKET } from "@/lib/supabase";
 
 export const runtime = "nodejs";
@@ -86,11 +87,13 @@ export async function POST(request: Request) {
     }
   }
 
+  let db: Database;
   let supabase: ReturnType<typeof getSupabaseAdmin>;
   try {
+    db = getDb();
     supabase = getSupabaseAdmin();
   } catch (error) {
-    console.error("Supabase is not configured:", error);
+    console.error("Database or storage is not configured:", error);
     return NextResponse.json(
       { error: "The form is not configured correctly. Please email us instead." },
       { status: 500 },
@@ -118,24 +121,22 @@ export async function POST(request: Request) {
     resumePath = objectKey;
   }
 
-  const { error: insertError } = await supabase
-    .from("interest_submissions")
-    .insert({
-      full_name: fields.fullName,
+  try {
+    await db.insert(interestSubmissions).values({
+      fullName: fields.fullName,
       email: fields.email,
       phone: fields.phone || null,
-      linkedin_or_github: fields.linkedinOrGithub || null,
-      year_in_school: fields.yearInSchool,
+      linkedinOrGithub: fields.linkedinOrGithub || null,
+      yearInSchool: fields.yearInSchool,
       major: fields.major,
-      experience_level: fields.experienceLevel || null,
-      interest_areas: interestAreas,
-      why_interested: fields.whyInterested,
-      resume_path: resumePath,
-      heard_about: fields.heardAbout || null,
+      experienceLevel: fields.experienceLevel || null,
+      interestAreas,
+      whyInterested: fields.whyInterested,
+      resumePath,
+      heardAbout: fields.heardAbout || null,
       questions: fields.questions || null,
     });
-
-  if (insertError) {
+  } catch (insertError) {
     console.error("Submission insert failed:", insertError);
     // Don't leave an orphaned file behind if the row never landed.
     if (resumePath) {
