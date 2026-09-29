@@ -1,0 +1,25 @@
+supabase/schema.sql
+  s_148b04e661887e::t_fd8e5a7979c92d 35-50
+components/sections/Bootcamp.tsx
+  s_148b04e661887e::t_ac80393e2dc44f 1-183
+app/bootcamp/page.tsx
+  s_148b04e661887e::t_fd8e5a7979c92d 1-14
+app/api/bootcamp/route.ts
+  s_148b04e661887e::t_fd8e5a7979c92d 1-88
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "23f8f85d505141576d0e22e86552888ada4e3beb",
+  "prompts": {},
+  "sessions": {
+    "s_148b04e661887e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "fe5fded0-55ef-496e-9c84-c1b49d48c79d",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Evan Taylor <eltaylor1104@gmail.com>"
+    }
+  }
+}
