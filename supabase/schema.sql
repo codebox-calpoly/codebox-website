@@ -32,3 +32,19 @@ alter table public.interest_submissions enable row level security;
 insert into storage.buckets (id, name, public)
 values ('resumes', 'resumes', false)
 on conflict (id) do nothing;
+
+-- Bootcamp project submissions, written by the /api/bootcamp route.
+create table if not exists public.bootcamp_submissions (
+    id uuid primary key default gen_random_uuid(),
+    created_at timestamptz not null default now(),
+    full_name text not null,
+    email text not null,
+    github_url text not null,
+    deployed_url text not null
+);
+
+create index if not exists bootcamp_submissions_created_at_idx
+    on public.bootcamp_submissions (created_at desc);
+
+-- Same setup as interest_submissions: RLS on, no policies, service role only.
+alter table public.bootcamp_submissions enable row level security;
